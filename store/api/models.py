@@ -18,7 +18,7 @@ class Products(models.Model):
     product_name = models.CharField(max_length=30)
     price = models.DecimalField(decimal_places=2, max_digits=7)
     inventory = models.IntegerField()
-    image = models.ImageField(upload_to='static/static_dirs/media/')
+    # image = models.ImageField(upload_to='static/static_dirs/media/')
 
 class TransactionsHistory(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
