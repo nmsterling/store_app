@@ -31,7 +31,3 @@ class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
         fields = ['id', 'user', 'product_name', 'quantity']
-# class Cart(models.Model):
-#     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
-#     product_name = models.CharField(max_length=30)
-#     quantity = models.IntegerField()
