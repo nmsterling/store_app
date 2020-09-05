@@ -16,18 +16,19 @@ class Profile(models.Model):
 
 class Products(models.Model):
     product_name = models.CharField(max_length=30)
+    product_description = models.TextField(blank=True)
     price = models.DecimalField(decimal_places=2, max_digits=7)
     inventory = models.IntegerField()
     # image = models.ImageField(upload_to='static/static_dirs/media/')
 
 class TransactionsHistory(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
-    product_name = models.CharField(max_length=30)
+    product_name = models.ForeignKey(Products, on_delete=models.CASCADE)
     quantity_purchased = models.IntegerField()
     transaction_total = models.DecimalField(decimal_places=2, max_digits=10)
     timestamp = timestamp = models.DateTimeField(auto_now=True)
 
 class Cart(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
-    product_name = models.CharField(max_length=30)
+    product_name = models.ForeignKey(Products, on_delete=models.CASCADE)
     quantity = models.IntegerField()
