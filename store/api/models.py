@@ -24,8 +24,8 @@ class TransactionsHistory(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
     product_name = models.CharField(max_length=30)
     quantity_purchased = models.IntegerField()
-    transaction_total = models.DecimalField(decimal_places=2, max_digits=)
-    timestamp = timestamp = models.DateTimeField(auto_now=True)
+    transaction_total = models.DecimalField(decimal_places=2, max_digits=7)
+    timestamp = models.DateTimeField(auto_now=True)
 
 class Cart(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
