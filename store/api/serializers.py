@@ -5,7 +5,7 @@ from .models import Profile, Products, TransactionsHistory, Cart
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['id', 'user', 'address', 'preferred']
+        fields = ['id', 'username', 'address', 'preferred']
 
 # https://stackoverflow.com/questions/35522768/django-serializer-imagefield-to-get-full-url
 class ProductsSerializer(serializers.ModelSerializer):
@@ -24,13 +24,13 @@ class TransactionHistorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TransactionsHistory
-        fields = ['id', 'user', 'product_name', 'quantity_purchased', 'transaction_total', 'timestamp']
+        fields = ['id', 'username', 'product_name', 'quantity_purchased', 'transaction_total', 'timestamp']
 
 class CartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cart
-        fields = ['id', 'user', 'product_name', 'quantity']
+        fields = ['id', 'username', 'product_name', 'quantity']
 # class Cart(models.Model):
 #     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
 #     product_name = models.CharField(max_length=30)
