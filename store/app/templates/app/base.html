@@ -34,7 +34,11 @@
             </ul>
         
             <ul class="navbar-nav ml-auto mt-2">
-              <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+              {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+              {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+              {% endif %}
               <li class="nav-item"><a class="nav-link" href="stocks/register">Search</a></li>
               <li class="nav-item"><a class="nav-link" href="stocks/logout">Cart</a></li>
             </ul>
