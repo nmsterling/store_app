@@ -14,9 +14,34 @@
 
         <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'app/styles.css' %}">
 </head>
 <body>
+
+  <nav class="navbar navbar-expand-md">
+    <!-- <a class="navbar-brand" href="{% url 'index' %}"><span class="red">Guitar Store</span></a>
+    <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div class="collapse navbar-collapse" id="navbar">
+        
+            <ul class="navbar-nav mr-auto mt-2">
+                <li class="nav-item"><a class="nav-link">Products</a></li>
+            </ul>
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'index' %}"><span class="red">Guitar Store</span></a></li>
+            </ul>
+        
+            <ul class="navbar-nav ml-auto mt-2">
+              <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+              <li class="nav-item"><a class="nav-link" href="stocks/register">Search</a></li>
+              <li class="nav-item"><a class="nav-link" href="stocks/logout">Cart</a></li>
+            </ul>
+        
+    </div>
+</nav>
+
     <div class="container">
       <div class="row justify-content-center">
 
