@@ -11,6 +11,7 @@ urlpatterns = [
     path('products/', views.ProductsListCreate.as_view()),
     path('transactions/', views.TransactionHistoryListCreate.as_view()),
     path('cart/', views.CartListCreate.as_view()),
+    path('cart/<int:pk>/', views.CartDetail.as_view(), name='update-cart'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
