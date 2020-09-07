@@ -1,3 +1,48 @@
-h1 {
-    font-family: monospace;
+/* -------Stylesheet--------- */
+
+/* html {
+    background: url(img/guitar_blue.jpg) no-repeat, center, center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: rgb(20, 20, 20)
+} */
+
+.navbar {
+    background-color: rgb(20, 20, 20)
+}
+
+.navbar-brand, .nav-link {
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.8px;
+    color: #fff;
+}
+
+a:hover {
+    color: #aac8d0;
+}
+
+#bg {
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}
+
+body {
+    background-color: rgb(20, 20, 20)
+}
+
+.form-group {
+    color: white;
+}
+
+.btn {
+    background-color: #aac8d0;
+}
+
+.btn:hover {
+    background-color: #dd8542;
 }

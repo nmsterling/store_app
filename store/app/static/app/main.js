@@ -1,1 +1,1 @@
-alert('Hey!')
+// JS file
