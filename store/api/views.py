@@ -50,3 +50,7 @@ class CartListCreate(generics.ListCreateAPIView):
     def pre_save(self, request):
         current_user = request.user
         user = User.objects.get(username=current_user)
+
+class CartDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer

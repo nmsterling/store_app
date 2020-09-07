@@ -13,7 +13,7 @@
     background-color: rgb(20, 20, 20)
 }
 
-.navbar-brand, .nav-link {
+.navbar-brand, .nav-link, div {
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.8px;
     color: #fff;
