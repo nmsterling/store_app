@@ -32,12 +32,16 @@ header,
 
 h1 {
   letter-spacing: 8px;
-  color: white;
+  color: whitesmoke;
 }
 
 h5 {
   letter-spacing: 3px;
-  color: white;
+  color: whitesmoke;
+}
+
+#link {
+  color: whitesmoke;
 }
 
 .hr-light {

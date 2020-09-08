@@ -5,8 +5,18 @@
 {% endblock %}
 
 {% block content %}
+    <style>
+        h1, h5 {
+            color: black;
+        }
+        #link {
+            color: black;
+        }
+      
+    </style>
+
     <div id="cartPage">
-        <h1 style="color:black">[[ message ]]</h1>
+        <h1>[[ message ]]</h1>
         <ul v-for="item in items">
             <li>[[ item.product_name ]]</li>
         </ul>
