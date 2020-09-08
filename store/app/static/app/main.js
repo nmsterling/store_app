@@ -1,4 +1,4 @@
-alert('Hey!')
+// Vue Instance
 cartPage = new Vue({
     delimiters: ['[[', ']]'],
     el: '#cartPage',
