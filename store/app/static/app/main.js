@@ -1,3 +1,6 @@
+// Animations init
+new WOW().init();
+
 // Vue Instance
 cartPage = new Vue({
     delimiters: ['[[', ']]'],
