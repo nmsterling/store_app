@@ -23,9 +23,9 @@ class Products(models.Model):
     product_description = models.TextField(blank=True)
     price = models.DecimalField(decimal_places=2, max_digits=7)
     inventory = models.IntegerField()
-    brand = models.CharField(max_length=50)
+    brand = models.CharField(max_length=50, blank=True, null=True)
     # Electric, Acoustic, Amps, Straps so users can filter by these in search
-    category = models.CharField(max_length=50)
+    category = models.CharField(max_length=50,blank=True, null=True)
     image = models.ImageField(upload_to='static/static_dirs/media/', default='static/static_dirs/media/Hendrix.jpg')
     related_products = models.CharField(max_length=500, blank=True, null=True)
 
