@@ -24,16 +24,16 @@
     <div class="collapse navbar-collapse" id="navbar">
         
             <ul class="navbar-nav mr-auto mt-2">
-                <li class="nav-item"><a class="nav-link" href="{% url 'app:list_products' %}">Products</a></li>
+                <li class="nav-item"><a class="nav-link">Products</a></li>
             </ul>
             <ul class="navbar-nav justify-content-center">
-                <li class="nav-item"><a class="navbar-brand" href="{% url 'app:index' %}"><span class="red">Guitar Store</span></a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'index' %}"><span class="red">Guitar Store</span></a></li>
             </ul>
         
             <ul class="navbar-nav ml-auto mt-2">
               {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'app:cart' %}">Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
               {% else %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
               {% endif %}
