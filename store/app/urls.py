@@ -5,7 +5,6 @@ from django.conf.urls.static import static
 from app import views
 from django.views.generic import TemplateView
 
-
 # app_name = 'app'
 
 urlpatterns = [

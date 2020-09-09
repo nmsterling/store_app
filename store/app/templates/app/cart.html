@@ -15,12 +15,14 @@
       
     </style>
 
-    <div id="cartPage">
-        <h1>[[ message ]]</h1>
-        <ul v-for="item in items">
-            <li>[[ item.product_name ]]</li>
-        </ul>
-
-    </div>
+    
+    <div id="cartPage" class="container">
+        <div class="row justify-content-center">
+            <h1>[[ message ]]</h1>
+            <ul v-for="item in items">
+                <li>[[ item.product_name ]]</li>
+            </ul>
+        </div>
+    </div> 
 
 {% endblock %}

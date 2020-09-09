@@ -12,7 +12,7 @@
             color: black;
         }
     </style>
-    <div class="container">
+    <div id="test" class="container">
         <div class="row justify-content-center">
             <form method="post" class="form-group">
                 {% csrf_token %}
@@ -20,5 +20,7 @@
                 <button type="submit" class="btn btn-success">Login</button>
             </form>
         </div>
-    </div> 
+    </div>
+    
+
 {% endblock %}
