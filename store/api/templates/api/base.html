@@ -46,10 +46,9 @@
               </li>
             </ul>
             {% if user.is_authenticated %}
-            <form action="{% url 'categories_list_view' %}"class="form-inline">
+            <form class="form-inline">
               <div class="md-form my-0">
-                <input name="category_search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                  <button type="submit">Search Gear</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
               </div>
             </form>
             {% endif %}
@@ -58,7 +57,7 @@
       </nav>
 
       {% block content %} {% endblock %}
-      
+
       <!-- Navbar -->
 
     <!-- Optional JavaScript -->
