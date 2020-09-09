@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from django.db import models
+from django.db.models import Q
 
 from api.models import Products
 
@@ -47,7 +47,7 @@ def list_cases(request):
 def categories_list_view(request):
     category = str(request.GET.get('category_search')).upper()
     print(category)
-    context = Products.objects.filter(category__icontains=category)
+    context = Products.objects.filter(Q(category__icontains=category) | Q(brand__icontains=category))
     if context:
         return render(request, "app/category_filter.html", {
         "products": context
