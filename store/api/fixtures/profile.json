@@ -1,0 +1,32 @@
+[
+   {
+       "model": "api.profile",
+       "pk": 2,
+       "fields": {
+           "user": "Alice",
+           "address": "555 Walnut St, Mechanicsburg PA 17055",
+           "preferred": true
+
+       }
+   }, 
+   {
+       "model": "api.profile",
+       "pk": 3,
+       "fields": {
+           "user": "Bob",
+           "address": "123 York St, Mechanicsburg PA 17055",
+           "preferred": true
+
+       }
+   }, 
+   {
+       "model": "api.profile",
+       "pk": 4,
+       "fields": {
+           "user": "Charlie",
+           "address": "777 Marble St, Mechanicsburg PA 17055",
+           "preferred": true
+
+       }
+   } 
+]
