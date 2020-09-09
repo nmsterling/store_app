@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
+from django.db import models
 
 from api.models import Products
 
@@ -30,13 +31,15 @@ def list_acoustic(request):
     })
 
 def list_amps(request):
-    products = Products.objects.filter(category="AMPS")
+    products = Products.objects.filter(category__icontains="AMPS")
+    print(products)
     return render(request, 'app/category_filter.html', {
         "products": products
     })
 
 def list_cases(request):
-    products = Products.objects.filter(category="CASES")
+    products = Products.objects.filter(category__icontains="CASES")
+    print(products)
     return render(request, 'app/category_filter.html', {
         "products": products
     })

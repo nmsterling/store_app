@@ -27,8 +27,8 @@ class Products(models.Model):
         )
     ),
         ('AMPS', (
-            ('TUBE AMP', 'tube'),
-            ('SOLID STATE AMP', 'solid state'),
+            ('TUBE AMPS', 'tube'),
+            ('SOLID STATE AMPS', 'solid state'),
         )
     ),
         ('CASES',(
