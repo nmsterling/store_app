@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from app import views
 from django.views.generic import TemplateView
 
-app_name = 'app'
+# app_name = 'app'
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='app/index.html'), name='index'),
