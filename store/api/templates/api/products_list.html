@@ -23,9 +23,12 @@
                 <td>{{ product.product_description }}</td>
                 <td><a href=""><img src="{{ product.image.url }}"></a></td>
                 <td>{{ product.price }}</td>
-                <td><a class="btn btn-primary" href="{% url 'cart' %}" role="button">Add to Cart</a></td>
 
             </tr>
+                {% if products == None %}
+                    <h1>No items to show</h1>
+                {% endif %}
+
             {% endif %}
         {% endfor %}
 
