@@ -1,0 +1,43 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}
+    Store
+{% endblock %}
+
+{% block content %}
+    <body>
+
+  <nav class="navbar navbar-expand-md">
+    <div class="collapse navbar-collapse" id="navbar">
+
+            <ul class="navbar-nav mr-auto mt-2">
+                <li class="nav-item"><a class="nav-link" href="{% url 'app:electric' %}">Electric Guitars</a></li>
+            </ul>
+            <ul class="navbar-nav mr-auto mt-2">
+                <li class="nav-item"><a class="nav-link" href="{% url 'app:acoustic' %}">Acoustic Guitars</a></li>
+            </ul>
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'app:amps' %}"><span class="red">Amps</span></a></li>
+            </ul>
+                  <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'app:cases' %}"><span class="red">Cases</span></a></li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto mt-2">
+              {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'app:cart' %}">Cart</a></li>
+              {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+              {% endif %}
+            </ul>
+
+    </div>
+</nav>
+
+    <div id="bg" style="background-color:rgb(20, 20, 20)">
+        <img src="static/app/img/strat.jpg" alt="Blue fender strat">
+    </div>
+
+{% endblock %}
