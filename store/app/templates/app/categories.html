@@ -1,33 +1,34 @@
-{% extends "app/base.html" %}
+
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
 
-{% block title %}
-    Store
-{% endblock %}
-
-{% block content %}
-    <body>
 
   <nav class="navbar navbar-expand-md">
     <div class="collapse navbar-collapse" id="navbar">
 
             <ul class="navbar-nav mr-auto mt-2">
-                <li class="nav-item"><a class="nav-link" href="{% url 'app:electric' %}">Electric Guitars</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'electric' %}">Electric Guitars</a></li>
             </ul>
             <ul class="navbar-nav mr-auto mt-2">
-                <li class="nav-item"><a class="nav-link" href="{% url 'app:acoustic' %}">Acoustic Guitars</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'acoustic' %}">Acoustic Guitars</a></li>
             </ul>
             <ul class="navbar-nav justify-content-center">
-                <li class="nav-item"><a class="navbar-brand" href="{% url 'app:amps' %}"><span class="red">Amps</span></a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'amps' %}"><span class="red">Amps</span></a></li>
             </ul>
                   <ul class="navbar-nav justify-content-center">
-                <li class="nav-item"><a class="navbar-brand" href="{% url 'app:cases' %}"><span class="red">Cases</span></a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'cases' %}"><span class="red">Cases</span></a></li>
             </ul>
 
             <ul class="navbar-nav ml-auto mt-2">
               {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'app:cart' %}">Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
               {% else %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
               {% endif %}
@@ -35,9 +36,10 @@
 
     </div>
 </nav>
+    <script src="{% static 'app/main.js' %}"></script>
+<body>
 
-    <div id="bg" style="background-color:rgb(20, 20, 20)">
-        <img src="static/app/img/strat.jpg" alt="Blue fender strat">
-    </div>
+</body>
+</html>
 
-{% endblock %}
+
