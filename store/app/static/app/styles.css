@@ -1,48 +1,50 @@
 /* -------Stylesheet--------- */
 
-/* html {
-    background: url(img/guitar_blue.jpg) no-repeat, center, center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-color: rgb(20, 20, 20)
-} */
-
-.navbar {
-    background-color: rgb(20, 20, 20)
+html,
+body,
+header,
+.view {
+  height: 100%;
 }
 
-.navbar-brand, .nav-link, div {
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.8px;
-    color: #fff;
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100vh;
+  }
 }
 
-a:hover {
-    color: #aac8d0;
+.top-nav-collapse {
+  background-color: #ad8d78 !important;
 }
 
-#bg {
-    background: no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; 
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
 }
 
-body {
-    background-color: rgb(20, 20, 20)
+@media (max-width: 991px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #ad8d78 !important;
+  }
 }
 
-.form-group {
-    color: white;
+h1 {
+  letter-spacing: 8px;
+  color: whitesmoke;
 }
 
-.btn {
-    background-color: #aac8d0;
+h5 {
+  letter-spacing: 3px;
+  color: whitesmoke;
 }
 
-.btn:hover {
-    background-color: #dd8542;
+#link {
+  color: whitesmoke;
+}
+
+.hr-light {
+  border-top: 3px solid #fff;
+  width: 80px;
 }
