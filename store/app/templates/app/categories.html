@@ -1,4 +1,4 @@
-
+{% extends "app/base.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -12,18 +12,7 @@
   <nav class="navbar navbar-expand-md">
     <div class="collapse navbar-collapse" id="navbar">
 
-            <ul class="navbar-nav mr-auto mt-2">
-                <li class="nav-item"><a class="nav-link" href="{% url 'electric' %}">Electric Guitars</a></li>
-            </ul>
-            <ul class="navbar-nav mr-auto mt-2">
-                <li class="nav-item"><a class="nav-link" href="{% url 'acoustic' %}">Acoustic Guitars</a></li>
-            </ul>
-            <ul class="navbar-nav justify-content-center">
-                <li class="nav-item"><a class="navbar-brand" href="{% url 'amps' %}"><span class="red">Amps</span></a></li>
-            </ul>
-                  <ul class="navbar-nav justify-content-center">
-                <li class="nav-item"><a class="navbar-brand" href="{% url 'cases' %}"><span class="red">Cases</span></a></li>
-            </ul>
+
 
             <ul class="navbar-nav ml-auto mt-2">
               {% if user.is_authenticated %}
@@ -38,6 +27,17 @@
 </nav>
     <script src="{% static 'app/main.js' %}"></script>
 <body>
+{% block content %}
+
+            <ul class="navbar-nav mr-auto mt-2">
+                <li class="nav-item"><a class="nav-link" href="{% url 'electric' %}">Electric Guitars</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'acoustic' %}">Acoustic Guitars</a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'amps' %}"><span class="red">Amps</span></a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'cases' %}"><span class="red">Cases</span></a></li>
+            </ul>
+
+
+{% endblock %}
 
 </body>
 </html>
