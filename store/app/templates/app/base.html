@@ -15,7 +15,9 @@
         <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'app/styles.css' %}">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/base_styles.css' %}">
     <title> {% block title %} {% endblock %} </title>
 </head>
 <body>
@@ -23,6 +25,7 @@
       <!--Navbar-->
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
         <div class="container">
+          <a id='link' class="navbar-brand" href="{% url 'index' %}">Home</a>
           {% if user.is_authenticated %}
             <a id='link' class="navbar-brand" href="{% url 'logout' %}">Logout</a>
           {% else %}
@@ -35,7 +38,7 @@
             <ul class="navbar-nav mr-auto">
               {% if user.is_authenticated %}
                 <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'cart' %}">Cart<span class="sr-only">(current)</span></a>
+                  <a id='link' class="nav-link" href="{% url 'cart' %}">Cart<span class="sr-only">(current)</span></a>
                 </li>
               {% endif %}
               <li class="nav-item">
@@ -52,10 +55,10 @@
           </div>
         </div>
       </nav>
-
+    </header>
+      <!-- Navbar -->
       {% block content %} {% endblock %}
       
-      <!-- Navbar -->
 
     <!-- Optional JavaScript -->
     <script src="{% static 'app/main.js' %}"></script>
