@@ -46,10 +46,7 @@ def categories_list_view(request):
     print(category)
     context = Products.objects.filter(category__icontains=category)
     if context:
-
-
         return render(request, "app/category_filter.html", {
         "products": context
         })
-
     return render(request, "app/search_fail.html")

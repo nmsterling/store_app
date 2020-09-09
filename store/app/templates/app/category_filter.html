@@ -23,6 +23,7 @@
                 <td>{{ product.product_description }}</td>
                 <td><a href=""><img src="{{ product.image.url }}"></a></td>
                 <td>{{ product.price }}</td>
+                <td><a class="btn btn-primary" href="{% url 'cart' %}" role="button">Add to Cart</a></td>
 
             </tr>
             {% endif %}
