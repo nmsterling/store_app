@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.list import ListView
 
 from api.models import Products
 
@@ -12,26 +13,43 @@ def list_products(request):
         "products": products
     })
 
+# class ProductsListView(ListView):
+#     model = Products
+
+
 def list_electric(request):
-    products = Products.objects.filter(category="Electric Guitar")
+    products = Products.objects.filter(category="ELECTRIC")
     return render(request, 'app/category_filter.html', {
         "products": products
     })
 
 def list_acoustic(request):
-    products = Products.objects.filter(category="Acoustic")
+    products = Products.objects.filter(category="ACOUSTIC")
     return render(request, 'app/category_filter.html', {
         "products": products
     })
 
 def list_amps(request):
-    products = Products.objects.filter(category="Amps")
+    products = Products.objects.filter(category="AMPS")
     return render(request, 'app/category_filter.html', {
         "products": products
     })
 
 def list_cases(request):
-    products = Products.objects.filter(category="Cases")
+    products = Products.objects.filter(category="CASES")
     return render(request, 'app/category_filter.html', {
         "products": products
     })
+
+def categories_list_view(request):
+    category = request.GET.get('category_search')
+    print(category)
+    context = Products.objects.filter(category__icontains=category)
+    if context:
+
+
+        return render(request, "app/category_filter.html", {
+        "products": context
+        })
+
+    return render(request, "app/search_fail.html")
