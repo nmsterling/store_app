@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -19,18 +20,37 @@ class Profile(models.Model):
         return self.user
 
 class Products(models.Model):
+    CATEGORIES = [
+        ('GUITARS', (
+            ('ACOUSTIC', 'acoustic'),
+            ('ELECTRIC', 'electric')
+        )
+    ),
+        ('AMPS', (
+            ('TUBE AMP', 'tube'),
+            ('SOLID STATE AMP', 'solid state'),
+        )
+    ),
+        ('CASES',(
+            ('SOFT CASES', 'soft cases'),
+            ('HARD CASES', 'hard cases')
+        )
+    ),
+]
+
     product_name = models.CharField(max_length=30, unique=True)
     product_description = models.TextField(blank=True)
     price = models.DecimalField(decimal_places=2, max_digits=7)
     inventory = models.IntegerField()
     brand = models.CharField(max_length=50, blank=True, null=True)
     # Electric, Acoustic, Amps, Straps so users can filter by these in search
-    category = models.CharField(max_length=50,blank=True, null=True)
+    category = models.CharField(max_length=30, choices=CATEGORIES, default="GUITARS")
     image = models.ImageField(upload_to='static/static_dirs/media/', default='static/static_dirs/media/Hendrix.jpg')
     related_products = models.CharField(max_length=500, blank=True, null=True)
 
     def __str__(self):
         return self.product_name
+
 
 class Reviews(models.Model):
     # https: // claritydev.net / blog / adding - a - blog - to - your - django - website / ----- the RichTextField

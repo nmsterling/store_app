@@ -42,7 +42,7 @@ def list_cases(request):
     })
 
 def categories_list_view(request):
-    category = request.GET.get('category_search')
+    category = str(request.GET.get('category_search')).upper()
     print(category)
     context = Products.objects.filter(category__icontains=category)
     if context:
