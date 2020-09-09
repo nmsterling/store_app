@@ -1,0 +1,79 @@
+[
+
+  {
+    "model": "api.Products",
+    "product_name": "Epiphone Broadway",
+    "products_description": "Vintage, Natural Hollowbody Electric Guitar with Laminated Spruce Top, Laminated Maple Back and Sides, Maple Neck, Pau Ferro Fingerboard and Bridge",
+    "price": "2459.99",
+    "inventory": "3",
+    "brand": "Epiphone",
+    "category": "acoustic",
+    "image": "static/static_dirs/media/epiphone_braodway_1951.JPG",
+    "related_products": "Elixer Acoustic Strings"
+  },
+   {
+    "model": "api.Products",
+    "product_name": "Fender Deluxe Reverb",
+    "products_description": "1x12 22-watt Tube Combo Amp. Black. four 12AX7s, two 12AT7s, two 6V6s, and a 5AR4 rectifier tubes",
+    "price": "1099.99",
+    "inventory": "13",
+    "brand": "Fender",
+    "category": "tube",
+    "image": "static/static_dirs/media/fender_deluxe.jpg",
+    "related_products": "Fender Telecaster, Elixer Strings"
+  },
+   {
+    "model": "api.Products",
+    "product_name": "Mono Gig Bag",
+    "products_description": "Reliable, sturdy, comfortable, plenty of pocket space for tablet/laptop, sheet music or accessories",
+    "price": "249.99",
+    "inventory": "7",
+    "brand": "Mono",
+    "category": "soft cases",
+    "image": "static/static_dirs/media/mono_case.jpg",
+    "related_products": "Fender Telecaster, Elixer Strings"
+  },
+     {
+    "model": "api.Products",
+    "product_name": "Fender Telecaster",
+    "products_description": "American made, single-coil pickups, Deep-C profile.",
+    "price": "1546.99",
+    "inventory": "11",
+    "brand": "Fender",
+    "category": "electric",
+    "image": " static/static_dirs/media/Butterscotch_tele.jpg",
+    "related_products": "Fender Deluxe Reverb '65 Reissue, Mono Vertigo Electric Hybrid Gig Bag"
+  }
+]
+
+//class Products(models.Model):
+//    CATEGORIES = [
+//        ('GUITARS', (
+//            ('ACOUSTIC', 'acoustic'),
+//            ('ELECTRIC', 'electric')
+//        )
+//    ),
+//        ('AMPS', (
+//            ('TUBE AMPS', 'tube'),
+//            ('SOLID STATE AMPS', 'solid state'),
+//        )
+//    ),
+//        ('CASES',(
+//            ('SOFT CASES', 'soft cases'),
+//            ('HARD CASES', 'hard cases')
+//        )
+//    ),
+//]
+//
+//    product_name = models.CharField(max_length=30, unique=True)
+//    product_description = models.TextField(blank=True)
+//    price = models.DecimalField(decimal_places=2, max_digits=7)
+//    inventory = models.IntegerField()
+//    brand = models.CharField(max_length=50, blank=True, null=True)
+//    # Electric, Acoustic, Amps, Straps so users can filter by these in search
+//    category = models.CharField(max_length=30, choices=CATEGORIES, default="GUITARS")
+//    image = models.ImageField(upload_to='static/static_dirs/media/', default='static/static_dirs/media/Hendrix.jpg')
+//    related_products = models.CharField(max_length=500, blank=True, null=True)
+//
+//    def __str__(self):
+//        return self.product_name
