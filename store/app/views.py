@@ -17,6 +17,7 @@ def list_products(request):
 # class ProductsListView(ListView):
 #     model = Products
 
+# def categories_filter(request):
 
 def list_electric(request):
     products = Products.objects.filter(category="ELECTRIC")
