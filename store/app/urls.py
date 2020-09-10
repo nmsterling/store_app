@@ -18,5 +18,6 @@ urlpatterns = [
     path('cases/', views.list_cases, name='cases'),
     path('cart/', TemplateView.as_view(template_name='app/cart.html'), name='cart'),
     path('search/', views.categories_list_view, name="categories_list_view"),
+    path('account', TemplateView.as_view(template_name='app/account.html'), name='account'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
