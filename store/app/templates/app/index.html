@@ -38,7 +38,7 @@
                   <a class="nav-link" href="{% url 'app:cart' %}">Cart<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                  <a id='link' class="nav-link" href="{% url 'account' %}">Account<span class="sr-only">(current)</span></a>
+                  <a id='link' class="nav-link" href="{% url 'app:account' %}">Account<span class="sr-only">(current)</span></a>
                 </li>
               {% endif %}
               <li class="nav-item">
@@ -48,7 +48,7 @@
             {% if user.is_authenticated %}
            <form action="{% url 'app:categories_list_view' %}" class="form-inline">
                     <div class="md-form my-0">
-                        <input name="category_search" class="form-control mr-sm-2" type="text" placeholder="Search"
+                        <input name="category_search" class="form-control mr-sm-2" style="color:black" type="text" placeholder="Search"
                                aria-label="Search">
                         <button type="submit">Search Gear</button>
                     </div>
