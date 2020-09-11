@@ -44,13 +44,13 @@ class TransactionHistoryListCreate(generics.ListCreateAPIView):
 
 
 class CartListCreate(generics.ListCreateAPIView):
-    queryset = Cart.objects.all()
     serializer_class = CartSerializer
 
-    def pre_save(self, request):
-        current_user = request.user
-        user = User.objects.get(username=current_user)
+    def get_queryset(self):
+        return Cart.objects.filter(user=self.request.user)
 
 class CartDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Cart.objects.all()
     serializer_class = CartSerializer
+
+    def get_queryset(self):
+        return Cart.objects.filter(user=self.request.user)

@@ -83,7 +83,7 @@ class TransactionsHistory(models.Model):
 
 class Cart(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
-    product_name = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product_name = models.ForeignKey(Products, to_field="product_name", on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
     def __str__(self):
