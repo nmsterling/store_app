@@ -35,19 +35,21 @@
             <ul class="navbar-nav mr-auto">
               {% if user.is_authenticated %}
                 <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'cart' %}">Cart<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{% url 'app:cart' %}">Cart<span class="sr-only">(current)</span></a>
                 </li>
               {% endif %}
               <li class="nav-item">
-                <a id='link' class="nav-link" href="#">Products</a>
+                <a id='link' class="nav-link" href="{% url 'app:list_products' %}">Products</a>
               </li>
             </ul>
             {% if user.is_authenticated %}
-            <form class="form-inline">
-              <div class="md-form my-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-              </div>
-            </form>
+           <form action="{% url 'app:categories_list_view' %}" class="form-inline">
+                    <div class="md-form my-0">
+                        <input name="category_search" class="form-control mr-sm-2" type="text" placeholder="Search"
+                               aria-label="Search">
+                        <button type="submit">Search Gear</button>
+                    </div>
+                </form>
             {% endif %}
           </div>
         </div>
