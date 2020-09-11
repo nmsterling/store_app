@@ -40,7 +40,7 @@
                 <ul class="navbar-nav mr-auto">
                     {% if user.is_authenticated %}
                     <li class="nav-item active">
-                        <a id='link' class="nav-link" href="{% url 'api:cart' %}">Cart<span class="sr-only">(current)</span></a>
+                        <a id='link' class="nav-link" href="{% url 'app:cart' %}">Cart<span class="sr-only">(current)</span></a>
                     </li>
                     {% endif %}
                     <li class="nav-item">

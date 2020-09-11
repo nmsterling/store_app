@@ -37,12 +37,12 @@
                 {% for category in categories %}
                 <li class="nav-item"><a class="navbar-brand" href="{% url 'app:filter' category=category %}">{{ category | title }}</a></li>
                 {% endfor %}
-<!--
+
             </ul>
 
         </div>
 
-{% endblock %}
+
 
     {% endblock %}
   </body>
