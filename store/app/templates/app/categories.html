@@ -17,7 +17,7 @@
             <ul class="navbar-nav ml-auto mt-2">
               {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'api:cart' %}">Cart</a></li>
               {% else %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
               {% endif %}
@@ -31,10 +31,10 @@
 
         <div>
             <ul class="navbar-nav mr-auto mt-2">
-                <li class="nav-item"><a class="navbar-brand" href="{% url 'electric' %}">Electric Guitars</a></li>
-                <li class="nav-item"><a class="navbar-brand" href="{% url 'acoustic' %}">Acoustic Guitars</a></li>
-                <li class="nav-item"><a class="navbar-brand" href="{% url 'amps' %}"><span class="red">Amps</span></a></li>
-                <li class="nav-item"><a class="navbar-brand" href="{% url 'cases' %}"><span class="red">Cases</span></a></li>
+                {% for category in categories %}
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'app:filter' category=category %}">{{ category | title }}</a></li>
+                {% endfor %}
+<!--
             </ul>
 
         </div>

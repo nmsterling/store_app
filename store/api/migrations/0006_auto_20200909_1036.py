@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='products',
             name='category',
-            field=models.CharField(choices=[('GUITARS', (('ACOUSTIC', 'acoustic'), ('ELECTRIC', 'electric'))), ('AMPS', (('TUBE AMPS', 'tube'), ('SOLID STATE AMPS', 'solid state'))), ('CASES', (('SOFT CASES', 'soft cases'), ('HARD CASES', 'hard cases')))], default='GUITARS', max_length=30),
+            field=models.CharField(choices=[('GUITARS', (('ACOUSTIC GUITARS', 'acoustic'), ('ELECTRIC GUITARS', 'electric'))), ('AMPS', (('TUBE AMPS', 'tube'), ('SOLID STATE AMPS', 'solid state'))), ('CASES', (('SOFT CASES', 'soft cases'), ('HARD CASES', 'hard cases')))], default='GUITARS', max_length=30),
         ),
     ]
