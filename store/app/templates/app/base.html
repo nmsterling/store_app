@@ -12,8 +12,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
@@ -21,54 +22,62 @@
     <title> {% block title %} {% endblock %} </title>
 </head>
 <body>
-    <header>
-      <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+<header>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
         <div class="container">
-          <a id='link' class="navbar-brand" href="{% url 'index' %}">Home</a>
-          {% if user.is_authenticated %}
-            <a id='link' class="navbar-brand" href="{% url 'logout' %}">Logout</a>
-          {% else %}
-            <a id='link' class="navbar-brand" href="{% url 'login' %}">Login</a>
-          {% endif %}
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
-            <ul class="navbar-nav mr-auto">
-              {% if user.is_authenticated %}
-                <li class="nav-item active">
-                  <a id='link' class="nav-link" href="{% url 'cart' %}">Cart<span class="sr-only">(current)</span></a>
-                </li>
-              {% endif %}
-              <li class="nav-item">
-                <a id='link' class="nav-link" href="{% url 'list_products' %}">Products</a>
-              </li>
-                <li class="nav-item">
-                <a id='link' class="nav-link" href="{% url 'categories' %}">Shop by category</a>
-              </li>
-            </ul>
+            <a id='link' class="navbar-brand" href="{% url 'app:index' %}">Home</a>
             {% if user.is_authenticated %}
-            <form action="{% url 'categories_list_view' %}"class="form-inline">
-              <div class="md-form my-0">
-                <input name="category_search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                  <button type="submit">Search Gear</button>
-              </div>
-            </form>
+            <a id='link' class="navbar-brand" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a id='link' class="navbar-brand" href="{% url 'login' %}">Login</a>
             {% endif %}
-          </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
+                    aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a id='link' class="nav-link" href="{% url 'api:cart' %}">Cart<span class="sr-only">(current)</span></a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a id='link' class="nav-link" href="{% url 'app:list_products' %}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id='link' class="nav-link" href="{% url 'app:categories' %}">Shop by category</a>
+                    </li>
+                </ul>
+                {% if user.is_authenticated %}
+                <form action="{% url 'app:categories_list_view' %}" class="form-inline">
+                    <div class="md-form my-0">
+                        <input name="category_search" class="form-control mr-sm-2" type="text" placeholder="Search"
+                               aria-label="Search">
+                        <button type="submit">Search Gear</button>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
         </div>
-      </nav>
-    </header>
-      <!-- Navbar -->
-      {% block content %} {% endblock %}
-      
+    </nav>
+</header>
+<!-- Navbar -->
+{% block content %} {% endblock %}
 
-    <!-- Optional JavaScript -->
-    <script src="{% static 'app/main.js' %}"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<!-- Optional JavaScript -->
+<script src="{% static 'app/main.js' %}"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </body>
 </html>

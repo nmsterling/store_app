@@ -4,6 +4,7 @@ from django.db.models import Q
 
 from api.models import Products
 
+import itertools
 # Create your views here.
 
 # Look up how to put these all into a Class Based APIList View with defs or something
@@ -17,6 +18,7 @@ def list_products(request):
 # class ProductsListView(ListView):
 #     model = Products
 
+# def categories_filter(request):
 
 def list_electric(request):
     products = Products.objects.filter(category="ELECTRIC")
@@ -48,6 +50,23 @@ def categories_list_view(request):
     category = str(request.GET.get('category_search')).upper()
     print(category)
     context = Products.objects.filter(Q(category__icontains=category) | Q(brand__icontains=category))
+    if context:
+        return render(request, "app/category_filter.html", {
+        "products": context
+        })
+
+def categories(request):
+
+    categories = Products.objects.values_list('category', flat=True).distinct()
+    if categories:
+        return render(request, "app/categories.html", {
+            "categories": categories
+        })
+
+def filter_products(request, category):
+    print(category)
+    context = Products.objects.filter(Q(category__icontains=category) | Q(brand__icontains=category))
+    print(context)
     if context:
         return render(request, "app/category_filter.html", {
         "products": context
