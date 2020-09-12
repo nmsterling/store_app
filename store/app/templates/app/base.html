@@ -51,11 +51,21 @@
                     </li>
                 </ul>
                 {% if user.is_authenticated %}
+<!--                search gear-->
                 <form action="{% url 'app:categories_list_view' %}" class="form-inline">
                     <div class="md-form my-0">
                         <input name="category_search" class="form-control mr-sm-2" type="text" placeholder="Search"
                                aria-label="Search">
                         <button type="submit">Search Gear</button>
+                    </div>
+                </form>
+<!--                users current cart-->
+                <form action="{% url 'app:cart' %}" class="form-inline">
+                    <div>
+
+                        {% if cart.quantity > 0 %}
+                            <button type="submit">Cart: {{ cart.quantity }}</button>
+                        {% endif %}
                     </div>
                 </form>
                 {% endif %}
