@@ -1,0 +1,24 @@
+"""
+https://coderwall.com/p/mvsoyg/django-dumpdata-and-loaddata
+
+https://docs.djangoproject.com/en/3.0/ref/django-admin/
+
+https://stackoverflow.com/questions/47700347/django-core-exceptions-improperlyconfigured-requested-setting-use-i18n-but-set
+
+"""
+
+(store_app-ChsdCTT3) C:\Users\Michael Kramer\PycharmProjects\group_project\store_app\store>set DJANGO_SETTINGS_MODULE=store.settings
+
+**** NOTE "set" is 'export' on Mac
+
+(store_app-ChsdCTT3) C:\Users\Michael Kramer\PycharmProjects\group_project\store_app\store>python manage.py dumpdata > api.json
+
+(store_app-ChsdCTT3) C:\Users\Michael Kramer\PycharmProjects\group_project\store_app\store>python manage.py loaddata api.json
+Installed 67 object(s) from 1 fixture(s)
+
+(store_app-ChsdCTT3) C:\Users\Michael Kramer\PycharmProjects\group_project\store_app\store>python manage.py dumpdata --indent 4 > data.json
+
+(store_app-ChsdCTT3) C:\Users\Michael Kramer\PycharmProjects\group_project\store_app\store>python manage.py dumpdata api.Products --indent 4 > products.json
+
+(store_app-ChsdCTT3) C:\Users\Michael Kramer\PycharmProjects\group_project\store_app\store>python manage.py loaddata products.json
+Installed 5 object(s) from 1 fixture(s)

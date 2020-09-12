@@ -44,7 +44,6 @@ class TransactionHistoryListCreate(generics.ListCreateAPIView):
 
 
 class CartListCreate(generics.ListCreateAPIView):
-    queryset = Cart.objects.all()
     serializer_class = CartSerializer
 
     def get_queryset(self):
