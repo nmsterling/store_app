@@ -1,0 +1,49 @@
+{% extends "app/base.html" %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Categories</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <nav class="navbar navbar-expand-md">
+    <div class="collapse navbar-collapse" id="navbar">
+
+
+
+            <ul class="navbar-nav ml-auto mt-2">
+              {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'api:cart' %}">Cart</a></li>
+              {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+              {% endif %}
+            </ul>
+
+    </div>
+  </nav>
+  <script src="{% static 'app/main.js' %}"></script>
+  <body>
+    {% block content %}
+
+        <div>
+            <ul class="navbar-nav mr-auto mt-2">
+                {% for category in categories %}
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'app:filter' category=category %}">{{ category | title }}</a></li>
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+
+    {% endblock %}
+  </body>
+</html>

@@ -31,3 +31,5 @@ class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
         fields = ['id', 'user', 'product_name', 'quantity']
+        # this specifies the depth of the relationships for related tables and populates those in json
+        depth = 2

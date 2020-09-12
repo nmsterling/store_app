@@ -1,3 +1,55 @@
+/* -------Stylesheet--------- */
+
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100vh;
+  }
+}
+
+.top-nav-collapse {
+  background-color: #ad8d78 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 991px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #ad8d78 !important;
+  }
+}
+
 h1 {
-    font-family: monospace;
+  letter-spacing: 8px;
+  color: whitesmoke;
+}
+
+h5 {
+  letter-spacing: 3px;
+  color: whitesmoke;
+}
+
+#link {
+  color: whitesmoke;
+}
+
+.hr-light {
+  border-top: 3px solid #fff;
+  width: 80px;
+}
+
+#test {
+  background-color: pink !important;
+  border: 10px solid black;
 }

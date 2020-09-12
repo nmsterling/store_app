@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+
+{% block title %}
+    Cart
+{% endblock %}
+
+{% block content %}
+    <style>
+        h1, h5 {
+            color: black;
+        }
+        #link {
+            color: black;
+        }
+      
+    </style>
+
+    
+    <div id="cartPage" class="container">
+        <div class="row justify-content-center">
+            <h1>[[ message ]]</h1>
+            <ul v-for="item in items">
+                <li>[[ item.product_name ]]</li>
+            </ul>
+        </div>
+    </div> 
+
+{% endblock %}

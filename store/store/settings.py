@@ -9,6 +9,14 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+"""
+https://coderwall.com/p/mvsoyg/django-dumpdata-and-loaddata
+
+https://docs.djangoproject.com/en/3.0/ref/django-admin/
+
+https://stackoverflow.com/questions/47700347/django-core-exceptions-improperlyconfigured-requested-setting-use-i18n-but-set
+
+"""
 
 from pathlib import Path
 import os
@@ -131,3 +139,9 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
+
+FIXTURES_DIRS = ('app/fixtures')
+
+

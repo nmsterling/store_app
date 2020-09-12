@@ -5,10 +5,22 @@
     Login
 {% endblock %}
 
+
 {% block content %}
-    <form method="post" class="form-group">
-        {% csrf_token %}
-        {{ form | crispy }}
-        <button type="submit" class="btn btn-success">Login</button>
-    </form>
+    <style>
+        #link {
+            color: black;
+        }
+    </style>
+    <div id="test" class="container">
+        <div class="row justify-content-center">
+            <form method="post" class="form-group">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit" class="btn btn-success">Login</button>
+            </form>
+        </div>
+    </div>
+    
+
 {% endblock %}
