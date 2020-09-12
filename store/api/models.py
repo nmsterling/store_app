@@ -13,11 +13,12 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
+    email = models.EmailField(max_length=254, default=None)
     address = models.CharField(max_length=300)
     preferred = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 class Products(models.Model):
     CATEGORIES = [

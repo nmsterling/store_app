@@ -1,4 +1,5 @@
 // Vue Instance
+
 cartPage = new Vue({
     delimiters: ['[[', ']]'],
     el: '#cartPage',
@@ -18,4 +19,18 @@ cartPage = new Vue({
             this.items = response.data
             })
     },
+})
+
+userProfile = new Vue({
+    delimiters: ['[[', ']]'],
+    el: '#userProfile',
+    data: {
+        message: 'Account',
+        info: [],
+    },
+    mounted() {
+        axios
+            .get('/api/profile')
+            .then(response => (this.info = response.data))
+    }
 })
