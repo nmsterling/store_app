@@ -58,10 +58,13 @@ def categories(request):
 def filter_products(request, category):
     print(category)
     context = Products.objects.filter(Q(category__icontains=category) | Q(brand__icontains=category))
+    cart_dict = Cart.objects.filter(user=current_user).aggregate(Sum('quantity'))
+    cart_list = [int(value) for value in cart_dict.values()]
     print(context)
     if context:
         return render(request, "app/category_filter.html", {
-        "products": context
+        "products": context,
+        "cart": cart_list[0]
         })
     return render(request, "app/search_fail.html")
 
