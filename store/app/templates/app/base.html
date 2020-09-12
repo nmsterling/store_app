@@ -63,8 +63,8 @@
                 <form action="{% url 'app:cart' %}" class="form-inline">
                     <div>
 
-                        {% if cart.quantity > 0 %}
-                            <button type="submit">Cart: {{ cart.quantity }}</button>
+                        {% if cart > 0 %}
+                            <button type="submit">Cart: {{ cart }}</button>
                         {% endif %}
                     </div>
                 </form>

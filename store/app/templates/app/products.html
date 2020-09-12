@@ -25,9 +25,9 @@ Store
         <td>{{ product.price }}</td>
         {% if user.is_authenticated %}
             <td>
-                <form action="{% url 'app:cart_add' product=product %}" method="post" class="form-inline">
-                    {% csrf_token %}
-                    <input type="hidden" name="product-name" class="form-control mr-sm-2" type="text" value="{{ product }}">
+                <form action="{% url 'app:cart_add' pk=product.pk %}" class="form-inline">
+<!--                    {% csrf_token %}-->
+                    <input type="hidden" name="product-name" class="form-control mr-sm-2" type="text" value="{{ product.pk }}">
                         <button class="btn btn-primary" type="submit">Add to Cart</button>
                 </form>
             </td>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Sum
 
 from api.models import Products, Cart
 
@@ -11,9 +12,10 @@ import itertools
 def index(request):
     current_user = request.user
     try:
-        cart = Cart.objects.get(user=current_user).aggregate('quantity')
+        cart_dict = Cart.objects.filter(user=current_user).aggregate(Sum('quantity'))
+        cart_list = [int(value) for value in cart_dict.values()]
         return render(request, 'app/index.html', {
-            "cart": cart
+            "cart": cart_list[0]
         })
     except ObjectDoesNotExist:
         return render(request, 'app/index.html')
@@ -21,9 +23,18 @@ def index(request):
 # Look up how to put these all into a Class Based APIList View with defs or something
 
 def list_products(request):
+    current_user = request.user
+    cart_dict = Cart.objects.filter(user=current_user).aggregate(Sum('quantity'))
+    # shares_dict = Transactions.objects.filter(user=user, title=quote["name"]).aggregate(Sum('shares'))
+    # print(shares_dict)
+    # shares_list = [int(value) for value in shares_dict.values()]
+    # print(shares_list[0])
+    # print(shares_list[0] - get_shares)
+    cart_list = [int(value) for value in cart_dict.values()]
     products = Products.objects.all()
     return render(request, 'app/products.html', {
-        "products": products
+        "products": products,
+        "cart": cart_list[0]
     })
 
 
@@ -54,14 +65,19 @@ def filter_products(request, category):
         })
     return render(request, "app/search_fail.html")
 
-def add_to_cart(request):
-    if request.method == 'POST':
-        data = request.POST.copy()
-        product_name = data.get('product_name')
-        print(product_name)
-        current_user = request.user
-        if product_name:
-            return render(request, "app/cart.html", {
-                "items": product_name,
-                "current_user": current_user
-            })
+def add_to_cart(request, pk):
+    current_user = request.user
+    product = Products.objects.get(pk=pk)
+    # add product to cart
+    c = Cart(user=current_user, product_name=product, quantity=1)
+    # save to disk
+    c.save()
+    # get number of items in cart for current user
+    cart_dict = Cart.objects.filter(user=current_user).aggregate(Sum('quantity'))
+    cart_list = [int(value) for value in cart_dict.values()]
+    products = Products.objects.all()
+
+    return render(request, "app/products.html", {
+        "cart": cart_list[0],
+        "products": products
+    })
