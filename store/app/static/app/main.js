@@ -7,6 +7,7 @@ cartPage = new Vue({
         message: 'Cart:',
         items: [],
         totals: "",
+        preferred: "",
     },
     methods: {
 
