@@ -34,7 +34,7 @@ userProfile = new Vue({
     methods: {
         changeStatus(id) {
             axios.patch(`/api/profile/${id}/`, {
-                completed: this.info.completed = !this.info.completed
+                preferred: this.info.preferred = !this.info.preferred
             })
             .then(res => console.log(res))
             .catch(err => console.log(err))
