@@ -1,0 +1,14 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}
+    Store
+{% endblock %}
+
+{% block content %}
+
+    <script>
+        const reviews_url = "{% url 'api:reviews' product_name={{ product.product_name }} %}";
+    </script>
+    <script src="{% static 'app/main.js' %}"></script>
+{% endblock %}

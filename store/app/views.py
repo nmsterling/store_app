@@ -57,6 +57,7 @@ def categories(request):
 
 def filter_products(request, category):
     print(category)
+    current_user = request.user
     context = Products.objects.filter(Q(category__icontains=category) | Q(brand__icontains=category))
     cart_dict = Cart.objects.filter(user=current_user).aggregate(Sum('quantity'))
     cart_list = [int(value) for value in cart_dict.values()]

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Profile, Products, TransactionsHistory, Cart
+from .models import Profile, Products, TransactionsHistory, Cart, Reviews
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,3 +33,25 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'product_name', 'quantity']
         # this specifies the depth of the relationships for related tables and populates those in json
         depth = 2
+
+class ReviewsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reviews
+        fields = [
+            'id',
+            'user',
+            'product_name',
+            'review',
+            'product_rating',
+        ]
+
+class ReviewCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reviews
+        fields = [
+            'id',
+            'user',
+            'product_name',
+            'review',
+            'product_rating',
+        ]

@@ -19,3 +19,25 @@ cartPage = new Vue({
             })
     },
 })
+
+reviewsPage = new Vue({
+    delimiters: ['[[', ']]'],
+    el: '#reviewsPage',
+       data: {
+        message: 'Cart:',
+        items: [],
+    },
+    methods: {
+
+    },
+    computed: {
+
+    },
+    mounted: function (){
+        axios.get('/api/reviews/')
+            .then(response => {
+            this.items = response.data
+            })
+    },
+
+})

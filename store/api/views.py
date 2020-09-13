@@ -9,8 +9,8 @@ from django.core.files.storage import default_storage
 
 from rest_framework import generics
 
-from .serializers import ProfileSerializer, ProductsSerializer, TransactionHistorySerializer, CartSerializer
-from .models import Profile, Products, TransactionsHistory, Cart
+from .serializers import ProfileSerializer, ProductsSerializer, TransactionHistorySerializer, CartSerializer, ReviewsSerializer, ReviewCreateSerializer
+from .models import Profile, Products, TransactionsHistory, Cart, Reviews
 
 class ProfileListCreate(generics.ListCreateAPIView):
 
@@ -54,3 +54,36 @@ class CartDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return Cart.objects.filter(user=self.request.user)
+
+
+class ReviewsList(generics.ListAPIView):
+    serializer_class = ReviewsSerializer
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        product_name = self.kwargs['product_name']
+        return Reviews.objects.filter(product_name=product_name)
+
+class ReviewsCreate(generics.ListCreateAPIView):
+    serializer_class = ReviewCreateSerializer
+
+    def get_queryset(self):
+
+        product_name = self.kwargs['product_name']
+        return Reviews.objects.filter(product_name=product_name)
+
+
+# from django documentation:
+# class PurchaseList(generics.ListAPIView):
+#     serializer_class = PurchaseSerializer
+#
+#     def get_queryset(self):
+#         """
+#         This view should return a list of all the purchases for
+#         the user as determined by the username portion of the URL.
+#         """
+#         username = self.kwargs['username']
+#         return Purchase.objects.filter(purchaser__username=username)

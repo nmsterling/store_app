@@ -21,7 +21,7 @@ Store
 
         <td>{{ product.product_name }}</td>
         <td>{{ product.product_description }}</td>
-        <td><a href=""><img src="{{ product.image.url }}"></a></td>
+        <td><img src="{{ product.image.url }}"></td>
         <td>{{ product.price }}</td>
         {% if user.is_authenticated %}
             <td>
@@ -32,6 +32,17 @@ Store
                 </form>
             </td>
         {% endif %}
+        <td>
+            <form action="{% url 'api:reviews' product_name=product.product_name %}">
+                <button class="btn btn-primary" type="submit">see customer reviews</button>
+            </form>
+        </td>
+                <td>
+            <form action="{% url 'api:create-review' product_name=product.product_name %}">
+                <button class="btn btn-primary" type="submit">write a review</button>
+            </form>
+        </td>
+
 
     </tr>
     {% endif %}

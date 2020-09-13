@@ -1,29 +1,59 @@
 {% extends "app/base.html" %}
+{% load static %}
 
 {% block title %}
-    Cart
+Cart
 {% endblock %}
 
 {% block content %}
-    <style>
-        h1, h5 {
-            color: black;
-        }
-        #link {
-            color: black;
-        }
-      
-    </style>
-    <script>let username = "{{ current_user }}"</script>
-    
-    <div id="cartPage" class="container">
-        <div class="row justify-content-center">
-            <h1>[[ message ]]</h1>
-            <ul v-for="item in items">
-<!--                <li>[[ item.product_name ]]</li>-->
-                    <li>[[ item ]]</li>
-            </ul>
-        </div>
-    </div> 
+    <script>
+        let username = "{{ current_user }}"
+    </script>
+{% if user.is_authenticated %}
+<div id="cartPage" class="container">
+    <div class="row justify-content-center">
+        <h2>[[ message ]]</h2>
+        <table class="table">
+            <tr>
+                <th class="col-4"> Item</th>
+                <th class="col-2">Name</th>
+                <th class="col-2"> Price</th>
+                <th class="col-2"> Quantity</th>
+                <th class="col-2"> Item Total</th>
+            </tr>
+            <tr v-for="item in items">
+                <td><img src="[[ item.product_name.image ]]" alt="[[ item.product_name.product_name ]]"></td>
+                <td class="col-2">[[ item.product_name.product_name ]]</td>
+                <td class="col-2"> $[[ item.product_name.price ]]</td>
+                <td class="col-2">[[ item.quantity ]]</td>
+                <td class="col-2">$[[ item.item_total ]]</td>
+            </tr>
+            <tr>
+                <td class="col-4"></td>
+                <td class="col-2"></td>
+                <td class="col-2"></td>
+                <td class="col-2">Subtotal:</td>
+                <td class="col-2">$[[ ]]</td>
+            </tr>
+            <tr>
+                <td class="col-4"></td>
+                <td class="col-2"></td>
+                <td class="col-2"></td>
+                <td class="col-2">Preferred Discount:</td>
+                <td class="col-2">-$</td>
+            </tr>
+            <tr>
+                <td class="col-4"></td>
+                <td class="col-2"></td>
+                <td class="col-2"></td>
+                <td class="col-2">Grand Total:</td>
+                <td class="col-2">$</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+{% endif %}
 
 {% endblock %}
