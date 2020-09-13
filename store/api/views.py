@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
+from decimal import Decimal
 
 # https://stackoverflow.com/questions/34563454/django-imagefield-upload-to-path
 # these I think we'll need for the image rendering somehow....
@@ -60,5 +61,19 @@ def totals(request):
     for cart in user_carts:
         item_total = cart.product_name.price * cart.quantity
         subtotal += item_total
+    profile = Profile.objects.get(user=request.user)
+    if profile.preferred == True:
+        discount = float(subtotal) * .15
+        preferred_discount = round(discount, 2)
+        total = float(subtotal)-preferred_discount
+        cart_total = round(total, 2)
+    else:
+        preferred_discount = 0
+        cart_total = subtotal
 
-    return JsonResponse({"subtotal": subtotal})
+
+    return JsonResponse({
+        "subtotal": subtotal,
+        "preferred_discount": preferred_discount,
+        "cart_total": cart_total,
+    })
