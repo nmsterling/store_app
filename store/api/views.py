@@ -7,6 +7,7 @@ from django.core.files import File
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
+from rest_framework import mixins
 from rest_framework import generics
 
 from .serializers import ProfileSerializer, ProductsSerializer, TransactionHistorySerializer, CartSerializer
@@ -18,6 +19,10 @@ class ProfileListCreate(generics.ListCreateAPIView):
     
     def get_queryset(self):
         return Profile.objects.filter(user=self.request.user)
+
+class ProfileStatus(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
 
 class ProductsListCreate(generics.ListCreateAPIView):
 
