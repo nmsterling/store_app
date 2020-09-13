@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
 
 # https://stackoverflow.com/questions/34563454/django-imagefield-upload-to-path
 # these I think we'll need for the image rendering somehow....
@@ -50,3 +52,13 @@ class CartDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return Cart.objects.filter(user=self.request.user)
+
+@api_view()
+def totals(request):
+    user_carts = Cart.objects.filter(user=request.user)
+    subtotal = 0
+    for cart in user_carts:
+        item_total = cart.product_name.price * cart.quantity
+        subtotal += item_total
+
+    return JsonResponse({"subtotal": subtotal})

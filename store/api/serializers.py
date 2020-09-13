@@ -28,19 +28,9 @@ class TransactionHistorySerializer(serializers.ModelSerializer):
 
 class CartSerializer(serializers.ModelSerializer):
     item_total = serializers.SerializerMethodField('get_item_total')
-    # sub_total = serializers.SerializerMethodField('get_sub_total')
 
     def get_item_total(self, cart):
         return cart.product_name.price * cart.quantity
-
-    #     def get_sub_total(self, cart):
-    #         sub_total = 0
-    #         for user in cart.user:
-
-    #             for product in cart.product_name:
-    #                 item_total = product.price * cart.quantity
-    #                 sub_total += item_total
-    #         return sub_total
 
     class Meta:
         model = Cart
