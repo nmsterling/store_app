@@ -16,5 +16,7 @@ urlpatterns = [
     path('search/', views.categories_list_view, name="categories_list_view"),
     path('cart/<int:pk>', views.add_to_cart, name='cart_add'),
     path('filter/<str:category>/', views.filter_products, name="filter"),
+    path('reviews/<str:product_name>', views.reviews_list, name="reviews"),
+    path('create-review/<str:product_name>/', views.create_review, name='create-review'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

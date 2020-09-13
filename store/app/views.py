@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Sum
 
-from api.models import Products, Cart
+from api.models import Products, Cart, Reviews
 
 import itertools
 # Create your views here.
@@ -85,3 +85,20 @@ def add_to_cart(request, pk):
         "cart": cart_list[0],
         "products": products
     })
+
+def reviews_list(request, product_name):
+    product_name = product_name
+    product = Products.objects.get(product_name=product_name)
+    reviews = Reviews.objects.filter(product_name=product_name)
+    if not reviews:
+        return render(request, "app/no_reviews.html", {
+            "product": product
+        })
+    return render(request, "app/reviews.html", {
+        "product": product,
+        "reviews": reviews
+    })
+
+def create_review(request, product_name):
+    pass
+

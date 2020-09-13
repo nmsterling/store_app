@@ -33,11 +33,11 @@ Store
             </td>
         {% endif %}
         <td>
-            <form action="{% url 'api:reviews' product_name=product.product_name %}">
+            <form action="{% url 'app:reviews' product_name=product.product_name %}">
                 <button class="btn btn-primary" type="submit">see customer reviews</button>
             </form>
         </td>
-                <td>
+        <td>
             <form action="{% url 'api:create-review' product_name=product.product_name %}">
                 <button class="btn btn-primary" type="submit">write a review</button>
             </form>
