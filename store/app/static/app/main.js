@@ -6,6 +6,7 @@ cartPage = new Vue({
     data: {
         message: 'Cart:',
         items: [],
+        totals: "",
     },
     methods: {
 
@@ -13,11 +14,16 @@ cartPage = new Vue({
     computed: {
 
     },
-    mounted: function (){
+    mounted:
+    function (){
         axios.get('/api/cart/')
             .then(response => {
             this.items = response.data
-            })
+            });
+        axios.get('/api/totals/')
+            .then(response => {
+            this.totals = response.data
+            });
     },
 })
 
