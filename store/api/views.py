@@ -14,14 +14,10 @@ from .models import Profile, Products, TransactionsHistory, Cart
 
 class ProfileListCreate(generics.ListCreateAPIView):
 
-
-    queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-
-    # this is how I passed a particular user to template, then Vue could grab that - we can rename it later or bag it altogether
-    def pre_save(self, request):
-        current_user = request.user
-        user = User.objects.get(username=current_user)
+    
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.request.user)
 
 class ProductsListCreate(generics.ListCreateAPIView):
 
