@@ -27,10 +27,14 @@ class TransactionHistorySerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'product_name', 'quantity_purchased', 'transaction_total', 'timestamp']
 
 class CartSerializer(serializers.ModelSerializer):
+    item_total = serializers.SerializerMethodField('get_item_total')
+
+    def get_item_total(self, cart):
+        return cart.product_name.price * cart.quantity
 
     class Meta:
         model = Cart
-        fields = ['id', 'user', 'product_name', 'quantity']
+        fields = ['id', 'user', 'product_name', 'quantity', 'item_total']
         # this specifies the depth of the relationships for related tables and populates those in json
         depth = 2
 

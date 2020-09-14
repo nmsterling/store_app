@@ -1,10 +1,13 @@
 // Vue Instance
+
 cartPage = new Vue({
     delimiters: ['[[', ']]'],
     el: '#cartPage',
     data: {
         message: 'Cart:',
         items: [],
+        totals: "",
+        preferred: "",
     },
     methods: {
 
@@ -12,12 +15,27 @@ cartPage = new Vue({
     computed: {
 
     },
-    mounted: function (){
+    mounted:
+    function (){
         axios.get('/api/cart/')
             .then(response => {
             this.items = response.data
-            })
+            });
+        axios.get('/api/totals/')
+            .then(response => {
+            this.totals = response.data
+            });
     },
+})
+
+userProfile = new Vue({
+    delimiters: ['[[', ']]'],
+    el: '#userProfile',
+    data: {
+        message: 'Account',
+        info: [],
+    },
+
 })
 
 reviewsPage = new Vue({
@@ -39,5 +57,11 @@ reviewsPage = new Vue({
             this.items = response.data
             })
     },
+
+    mounted() {
+        axios
+            .get('/api/profile')
+            .then(response => (this.info = response.data))
+    }
 
 })

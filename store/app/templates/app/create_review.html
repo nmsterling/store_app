@@ -2,6 +2,10 @@
 {% load rest_framework %}
 
 <html>
+   <script>
+        const reviews_url = "{% url 'api:reviews' product_name="{{product.product_name}}" %}";
+
+    </script>
 <body>
 
 <!--<h1>Profile - {{ profile.name }}</h1>-->
@@ -13,4 +17,5 @@
 </form>
 
 </body>
+
 </html>
