@@ -99,6 +99,12 @@ def reviews_list(request, product_name):
         "reviews": reviews
     })
 
-def create_review(request, product_name):
-    pass
+def create_review(request, pk):
+    current_user = request.user
+    product = Products.objects.get(pk=pk)
+    return render(request, "app/create_review.html", {
+        "user": current_user,
+        "product": product
+    })
+
 

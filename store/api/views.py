@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 from django.http import JsonResponse
+
+from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from decimal import Decimal
 
@@ -12,7 +16,8 @@ from django.core.files.storage import default_storage
 
 from rest_framework import generics
 
-from .serializers import ProfileSerializer, ProductsSerializer, TransactionHistorySerializer, CartSerializer, ReviewsSerializer, ReviewCreateSerializer
+
+from .serializers import ProfileSerializer, ProductsSerializer, TransactionHistorySerializer, CartSerializer, ReviewsSerializer, ReviewDetailSerializer
 from .models import Profile, Products, TransactionsHistory, Cart, Reviews
 
 class ProfileListCreate(generics.ListCreateAPIView):
@@ -66,8 +71,7 @@ class ReviewsList(generics.ListAPIView):
         product_name = self.kwargs['product_name']
         return Reviews.objects.filter(product_name=product_name)
 
-class ReviewsCreate(generics.ListCreateAPIView):
-    serializer_class = ReviewCreateSerializer
+class ReviewsCreateUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
 

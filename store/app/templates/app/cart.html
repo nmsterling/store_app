@@ -6,13 +6,9 @@ Cart
 {% endblock %}
 
 {% block content %}
-<<<<<<< HEAD
     <script>
         let username = "{{ current_user }}"
     </script>
-=======
-
->>>>>>> 1171d9fa4a1aef3157cc209031fb2b37c59281d1
 {% if user.is_authenticated %}
 <div id="cartPage" class="container">
     <div class="row justify-content-center">
@@ -22,8 +18,8 @@ Cart
                 <th class="col-4"> Item</th>
                 <th class="col-2">Name</th>
                 <th class="col-2"></th>
-                <th class="col-2"> Price</th>
                 <th class="col-2"> Quantity</th>
+                <th class="col-2"> Price</th>
                 <th class="col-2"> Item Total</th>
             </tr>
             <tr v-for="item in items">
@@ -38,35 +34,27 @@ Cart
                 <td class="col-2"></td>
                 <td class="col-2"></td>
                 <td class="col-2">Subtotal:</td>
-<<<<<<< HEAD
                 <td class="col-2">$[[ ]]</td>
-=======
                 <td class="col-2">$[[ totals.subtotal ]]</td>
->>>>>>> 1171d9fa4a1aef3157cc209031fb2b37c59281d1
+
             </tr>
             <tr>
                 <td class="col-4"></td>
                 <td class="col-2"></td>
                 <td class="col-2"></td>
-<<<<<<< HEAD
                 <td class="col-2">Preferred Discount:</td>
                 <td class="col-2">-$</td>
-=======
                 <td class="col-2">15% Preferred Customer Discount:</td>
                 <td class="col-2">-$[[ totals.preferred_discount ]]</td>
->>>>>>> 1171d9fa4a1aef3157cc209031fb2b37c59281d1
             </tr>
             <tr>
                 <td class="col-4"></td>
                 <td class="col-2"></td>
                 <td class="col-2"></td>
-<<<<<<< HEAD
                 <td class="col-2">Grand Total:</td>
                 <td class="col-2">$</td>
-=======
                 <td class="col-2">Cart Total:</td>
                 <td class="col-2">$[[ totals.cart_total ]]</td>
->>>>>>> 1171d9fa4a1aef3157cc209031fb2b37c59281d1
             </tr>
         </table>
     </div>

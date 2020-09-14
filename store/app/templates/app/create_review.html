@@ -1,21 +1,43 @@
-{% extends base.html %}
-{% load rest_framework %}
+{% extends "app/base.html" %}
 
-<html>
-   <script>
-        const reviews_url = "{% url 'api:reviews' product_name="{{product.product_name}}" %}";
+{% load static %}
 
-    </script>
-<body>
+{% block title %}
+Write a review
+{% endblock %}
+<script>
+        const reviews_url = "{% url 'api:create-review' pk="{{ product.pk }}" %}";
 
-<!--<h1>Profile - {{ profile.name }}</h1>-->
 
-<form action="{% url 'api:create-review' product_name='product.product_name'%}" method="POST">
-    {% csrf_token %}
-    {% render_form serializer %}
-    <input type="submit" value="Save">
-</form>
+</script>
+{% block content %}
+<h1>Write a review: {{ product.product_name }} <img src="{{ product.image.url }}"></h1>
 
-</body>
+<!--<form action="{% url 'api:create-review' pk=product.pk %}" method="POST">-->
+<!--    {% csrf_token %}-->
+<input id="user" type="hidden" value="{{ current_user }}">
+<input id="product_name" type="hidden" value="{{ product.product_name }}">
+<textarea id="review" rows="5" columns="100" placeholder="write a review for {{ product.product_name }}"></textarea>
+<label for="rating">Give a 1 to 5 star rating</label>
+<select id="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+<!--</form>-->
 
-</html>
+<!--    # # https: // claritydev.net / blog / adding - a - blog - to - your - django - website / -&#45;&#45;&#45;&#45; the RichTextField-->
+<!--    # ONE_TO_FIVE_STAR_RATING_CHOICES = (-->
+<!--    #     (1, '1'),-->
+<!--    #     (2, '2'),-->
+<!--    #     (3, '3'),-->
+<!--    #     (4, '4'),-->
+<!--    #     (5, '5'),-->
+<!--    # )-->
+<!--    # user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)-->
+<!--    # product_name = models.ForeignKey(Products, to_field='product_name', on_delete=models.CASCADE)-->
+<!--    # review = models.TextField(blank=True)-->
+<!--    # product_rating = models.IntegerField(choices=ONE_TO_FIVE_STAR_RATING_CHOICES)-->
+{% endblock %}

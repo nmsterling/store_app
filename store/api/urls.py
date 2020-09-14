@@ -16,8 +16,8 @@ urlpatterns = [
     path('transactions/', views.TransactionHistoryListCreate.as_view()),
     path('cart/', views.CartListCreate.as_view(), name='cart'),
     path('cart/<int:pk>/', views.CartDetail.as_view(), name='update-cart'),
-    path('reviews/<str:product_name>', views.ReviewsList.as_view(), name='reviews'),
-    path('create-review/<str:product_name>/', views.ReviewsCreate.as_view(), name='create-review'),
+    path('reviews/<int:pk>', views.ReviewsList.as_view(), name='reviews'),
+    path('create-review/<int:pk>/', views.ReviewsCreateUpdateDestroy.as_view(), name='create-review'),
     path('totals/', views.totals, name="totals"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

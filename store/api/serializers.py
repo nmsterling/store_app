@@ -49,7 +49,7 @@ class ReviewsSerializer(serializers.ModelSerializer):
             'product_rating',
         ]
 
-class ReviewCreateSerializer(serializers.ModelSerializer):
+class ReviewDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reviews
         fields = [
