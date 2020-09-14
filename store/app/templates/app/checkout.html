@@ -21,7 +21,7 @@ Checkout
 
             </tr>
             <tr v-for="item in items">
-                <td class="col-2">image</td>
+                <td class="col-2"><img v-bind:src="item.product_name.image"></td>
                 <td class="col-2">[[ item.product_name.product_name ]]</td>
                 <td class="col-2"> $[[ item.product_name.price ]]</td>
                 <td class="col-2">[[ item.quantity ]]</td>
