@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Cart
+Checkout
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@ Cart
 {% if user.is_authenticated %}
 <div id="cartPage" class="container">
     <div class="row justify-content-center">
-        <h2>[[ message ]]</h2>
+        <h2>Checkout [[ message ]]</h2>
         <table class="table">
             <tr>
                 <th class="col-2"> Item </th>
@@ -18,7 +18,7 @@ Cart
                 <th class="col-2"> Price </th>
                 <th class="col-2"> Quantity </th>
                 <th class="col-2"> Item Total </th>
-                <th class="col-2"> Remove From Cart </th>
+
             </tr>
             <tr v-for="item in items">
                 <td class="col-2">image</td>
@@ -26,9 +26,7 @@ Cart
                 <td class="col-2"> $[[ item.product_name.price ]]</td>
                 <td class="col-2">[[ item.quantity ]]</td>
                 <td class="col-2">$[[ item.item_total ]] </td>
-                <td class="col-2">
-                    <button type="button" class="btn btn-light btn-sm" @click="deleteCartItem(item.id)">X</button>
-                </td>
+
 
             </tr>
             <tr>
@@ -37,7 +35,7 @@ Cart
                 <td class="col-2"></td>
                 <td class="col-2">Subtotal:</td>
                 <td class="col-2">$[[ totals.subtotal ]]</td>
-                <td class="col-2"></td>
+
             </tr>
             <tr>
                 <td class="col-2"></td>
@@ -56,7 +54,9 @@ Cart
                 <td class="col-2"></td>
             </tr>
         </table>
-        <a class="btn btn-light" href="{% url 'app:checkout' %}">Checkout</a>
+        <a class="btn btn-light" href="{% url 'app:cart' %}">Go Back to Edit Cart</a>
+        <button class="btn btn-light"> Confirm Checkout</button>
+
     </div>
 </div>
 {% else %}
