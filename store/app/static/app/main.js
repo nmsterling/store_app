@@ -1,5 +1,8 @@
 // Vue Instance
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+
 cartPage = new Vue({
     delimiters: ['[[', ']]'],
     el: '#cartPage',
@@ -34,6 +37,15 @@ userProfile = new Vue({
     data: {
         message: 'Account',
         info: [],
+    },
+    methods: {
+        changeStatus(id) {
+            axios.patch(`/api/profile/${id}/`, {
+                preferred: this.info.preferred = !this.info.preferred
+            })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+        }
     },
     mounted() {
         axios
