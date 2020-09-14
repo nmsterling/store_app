@@ -50,3 +50,7 @@ h5 {
 header {
   margin-bottom: 15vh;
 }
+
+table, td, th {
+    text-align: center;
+}

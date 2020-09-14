@@ -10,6 +10,13 @@ cartPage = new Vue({
         preferred: "",
     },
     methods: {
+        deleteCartItem: function(id) {
+              const url = "/api/cart/" + id + "/";
+              axios.delete(url)
+                  .then(response => {
+                      console.log(response)
+                  });
+        },
 
     },
     computed: {

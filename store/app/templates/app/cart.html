@@ -13,41 +13,50 @@ Cart
         <h2>[[ message ]]</h2>
         <table class="table">
             <tr>
-                <th class="col-4"> Item</th>
+                <th class="col-2"> Item </th>
                 <th class="col-2"></th>
-                <th class="col-2"> Price</th>
-                <th class="col-2"> Quantity</th>
-                <th class="col-2"> Item Total</th>
+                <th class="col-2"> Price </th>
+                <th class="col-2"> Quantity </th>
+                <th class="col-2"> Item Total </th>
+                <th class="col-2"> Remove From Cart </th>
             </tr>
             <tr v-for="item in items">
-                <td class="col-4">image</td>
+                <td class="col-2">image</td>
                 <td class="col-2">[[ item.product_name.product_name ]]</td>
                 <td class="col-2"> $[[ item.product_name.price ]]</td>
                 <td class="col-2">[[ item.quantity ]]</td>
-                <td class="col-2">$[[ item.item_total ]]</td>
+                <td class="col-2">$[[ item.item_total ]] </td>
+                <td class="col-2">
+                    <button type="button" class="btn btn-light btn-sm" @click="deleteCartItem(item.id)">X</button>
+                </td>
+
             </tr>
             <tr>
-                <td class="col-4"></td>
+                <td class="col-2"></td>
                 <td class="col-2"></td>
                 <td class="col-2"></td>
                 <td class="col-2">Subtotal:</td>
                 <td class="col-2">$[[ totals.subtotal ]]</td>
+                <td class="col-2"></td>
             </tr>
             <tr>
-                <td class="col-4"></td>
+                <td class="col-2"></td>
                 <td class="col-2"></td>
                 <td class="col-2"></td>
                 <td class="col-2">15% Preferred Customer Discount:</td>
                 <td class="col-2">-$[[ totals.preferred_discount ]]</td>
+                <td class="col-2"></td>
             </tr>
             <tr>
-                <td class="col-4"></td>
+                <td class="col-2"></td>
                 <td class="col-2"></td>
                 <td class="col-2"></td>
                 <td class="col-2">Cart Total:</td>
                 <td class="col-2">$[[ totals.cart_total ]]</td>
+                <td class="col-2"></td>
             </tr>
         </table>
+        <a class="btn btn-light" href="{% url 'app:checkout' %}">Checkout</a>
     </div>
 </div>
 {% else %}
