@@ -1,4 +1,6 @@
 // Vue Instance
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
 
 cartPage = new Vue({
     delimiters: ['[[', ']]'],
@@ -10,11 +12,65 @@ cartPage = new Vue({
         preferred: "",
     },
     methods: {
+        decreaseQuantity: function(id){
+                const url = "/api/cart/" + id + "/";
+                const item = this.items.filter(item => item.id === id)[0];
+                axios.patch(url, {
+                    quantity: item.quantity - 1
+                })
+                .then(response => {
+                    this.items.forEach(item => {
+                        if (item.id === response.data.id) {
+                            item.quantity = response.data.quantity;
+                            item.item_total = response.data.item_total;
+                        }
+                    })
+
+                })
+                .then (
+                    axios.get('/api/totals/')
+                        .then(response => {
+                        this.totals = response.data
+                        console.log(response)
+                        })
+                );
+          },
+
+        increaseQuantity: function(id){
+                const url = "/api/cart/" + id + "/";
+                const item = this.items.filter(item => item.id === id)[0];
+                axios.patch(url, {
+                    quantity: item.quantity + 1
+                })
+                .then(response => {
+                    this.items.forEach(item => {
+                        if (item.id === response.data.id) {
+                            item.quantity = response.data.quantity;
+                            item.item_total = response.data.item_total;
+                        }
+                    })
+
+                })
+                .then (
+                    axios.get('/api/totals/')
+                        .then(response => {
+                        this.totals = response.data
+                        console.log(response)
+                        })
+                );
+        },
         deleteCartItem: function(id) {
               const url = "/api/cart/" + id + "/";
               axios.delete(url)
                   .then(response => {
-                      console.log(response)
+                    axios.get('/api/cart/')
+                        .then(response => {
+                        this.items = response.data
+                        });
+                    axios.get('/api/totals/')
+                        .then(response => {
+                        this.totals = response.data
+                        });
                   });
         },
 
@@ -23,16 +79,16 @@ cartPage = new Vue({
 
     },
     mounted:
-    function (){
-        axios.get('/api/cart/')
-            .then(response => {
-            this.items = response.data
-            });
-        axios.get('/api/totals/')
-            .then(response => {
-            this.totals = response.data
-            });
-    },
+        function (){
+            axios.get('/api/cart/')
+                .then(response => {
+                this.items = response.data
+                });
+            axios.get('/api/totals/')
+                .then(response => {
+                this.totals = response.data
+                });
+        },
 })
 
 userProfile = new Vue({

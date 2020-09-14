@@ -24,10 +24,14 @@ Cart
                 <td class="col-2">image</td>
                 <td class="col-2">[[ item.product_name.product_name ]]</td>
                 <td class="col-2"> $[[ item.product_name.price ]]</td>
-                <td class="col-2">[[ item.quantity ]]</td>
+                <td class="col-2">
+                    <button type="button" class="btn btn-light btn-sm" @click="decreaseQuantity(item.id)">&mdash;</button>
+                    [[ item.quantity ]]
+                    <button type="button" class="btn btn-light btn-sm" @click="increaseQuantity(item.id)">&#xff0b;</button>
+                </td>
                 <td class="col-2">$[[ item.item_total ]] </td>
                 <td class="col-2">
-                    <button type="button" class="btn btn-light btn-sm" @click="deleteCartItem(item.id)">X</button>
+                    <button type="button" class="btn btn-light btn-sm" @click="deleteCartItem(item.id)">&#10005;</button>
                 </td>
 
             </tr>
