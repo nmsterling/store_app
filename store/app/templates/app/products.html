@@ -14,7 +14,6 @@ Store
         <th>Description</th>
         <th>Image</th>
         <th>Price</th>
-        <th>Primanry Key</th>
     </tr>
     {% for product in products %}
     {% if product.inventory > 0 %}
@@ -24,7 +23,6 @@ Store
         <td>{{ product.product_description }}</td>
         <td><img src="{{ product.image.url }}"></td>
         <td>{{ product.price }}</td>
-        <td>{{ product.pk }}</td>
         {% if user.is_authenticated %}
             <td>
                 <form action="{% url 'app:cart_add' pk=product.pk %}" class="form-inline">
@@ -35,7 +33,7 @@ Store
             </td>
         {% endif %}
         <td>
-            <form action="{% url 'app:reviews' product_name=product.product_name %}">
+            <form action="{% url 'app:reviews' pk=product.pk %}">
                 <button class="btn btn-primary" type="submit">see customer reviews</button>
             </form>
         </td>

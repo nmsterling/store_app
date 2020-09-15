@@ -6,38 +6,41 @@
 Write a review
 {% endblock %}
 <script>
-        const reviews_url = "{% url 'api:create-review' pk="{{ product.pk }}" %}";
 
-
+        let username = "{{ user }}";
+        let product = "{{ product }}";
+        const reviews_url = "{% url 'api:create-review' pk="{{ product.pk }}" %}"
 </script>
+
 {% block content %}
-<h1>Write a review: {{ product.product_name }} <img src="{{ product.image.url }}"></h1>
+  <form class="container" action="{% url 'app:review_save' %}" method="post">
+    <h1>Write a review: {{ product.product_name }} <img src="{{ product.image.url }}"></h1>
+<!--    <h2>{{ user }}</h2>-->
 
-<!--<form action="{% url 'api:create-review' pk=product.pk %}" method="POST">-->
-<!--    {% csrf_token %}-->
-<input id="user" type="hidden" value="{{ current_user }}">
-<input id="product_name" type="hidden" value="{{ product.product_name }}">
-<textarea id="review" rows="5" columns="100" placeholder="write a review for {{ product.product_name }}"></textarea>
-<label for="rating">Give a 1 to 5 star rating</label>
-<select id="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-</select>
-<!--</form>-->
 
-<!--    # # https: // claritydev.net / blog / adding - a - blog - to - your - django - website / -&#45;&#45;&#45;&#45; the RichTextField-->
-<!--    # ONE_TO_FIVE_STAR_RATING_CHOICES = (-->
-<!--    #     (1, '1'),-->
-<!--    #     (2, '2'),-->
-<!--    #     (3, '3'),-->
-<!--    #     (4, '4'),-->
-<!--    #     (5, '5'),-->
-<!--    # )-->
-<!--    # user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)-->
-<!--    # product_name = models.ForeignKey(Products, to_field='product_name', on_delete=models.CASCADE)-->
-<!--    # review = models.TextField(blank=True)-->
-<!--    # product_rating = models.IntegerField(choices=ONE_TO_FIVE_STAR_RATING_CHOICES)-->
+<!--    <div id="reviewsPage">-->
+
+        {% csrf_token %}
+        <input name="user" type="hidden" value="{{ user }}">
+        <input name="pk" type="hidden" value="{{ product.pk }}">
+        <textarea name="review" rows="5" columns="100" placeholder="write a review for {{ product.product_name }}"></textarea>
+        <label for="rating">Give a 1 to 5 star rating</label>
+        <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <input type="submit" value="Submit Review">
+    </form>
+
+        <!-- Optional JavaScript -->
+        <script src="{% static 'app/main.js' %}"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<!--    </div>-->
+ </div>
 {% endblock %}

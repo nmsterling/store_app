@@ -72,11 +72,11 @@ class ReviewsList(generics.ListAPIView):
         return Reviews.objects.filter(product_name=product_name)
 
 class ReviewsCreateUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-
+    serializer_class = ReviewDetailSerializer
     def get_queryset(self):
 
-        product_name = self.kwargs['product_name']
-        return Reviews.objects.filter(product_name=product_name)
+        pk = self.kwargs['pk']
+        return Reviews.objects.filter(pk=pk)
 
 
 # from django documentation:

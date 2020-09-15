@@ -26,7 +26,7 @@ cartPage = new Vue({
             this.totals = response.data
             });
     },
-})
+}),
 
 userProfile = new Vue({
     delimiters: ['[[', ']]'],
@@ -36,14 +36,16 @@ userProfile = new Vue({
         info: [],
     },
 
-})
+}),
+
+//alert('works');
 
 reviewsPage = new Vue({
     delimiters: ['[[', ']]'],
     el: '#reviewsPage',
        data: {
-        message: 'Cart:',
-        items: [],
+        user: user,
+        products: [],
     },
     methods: {
 
@@ -52,7 +54,7 @@ reviewsPage = new Vue({
 
     },
     mounted: function (){
-        axios.get('/api/reviews/')
+        axios.get('/api/products/')
             .then(response => {
             this.items = response.data
             })
@@ -64,4 +66,4 @@ reviewsPage = new Vue({
             .then(response => (this.info = response.data))
     }
 
-})
+});

@@ -30,10 +30,5 @@ Store
     </tr>
     {% endfor %}
 
-
-    <script>
-        const reviews_url = "{% url 'api:reviews' product_name="{{product.product_name}}" %}";
-
-    </script>
     <script src="{% static 'app/main.js' %}"></script>
     {% endblock %}

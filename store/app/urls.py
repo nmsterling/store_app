@@ -17,7 +17,8 @@ urlpatterns = [
     path('cart/<int:pk>', views.add_to_cart, name='cart_add'),
     path('account/', TemplateView.as_view(template_name='app/account.html'), name='account'),
     path('filter/<str:category>/', views.filter_products, name="filter"),
-    path('reviews/<str:product_name>', views.reviews_list, name="reviews"),
+    path('reviews/<int:pk>', views.reviews_list, name="reviews"),
     path('create-review/<int:pk>/', views.create_review, name='create-review'),
+    path('review_save/', views.review_save, name='review_save'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
