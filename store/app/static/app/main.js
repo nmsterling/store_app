@@ -40,11 +40,26 @@ userProfile = new Vue({
     el: '#userProfile',
     data: {
         message: 'My Account',
+        title: "Transaction History",
         info: [],
     },
     mounted() {
         axios
             .get('/api/profile')
             .then(response => (this.info = response.data))
+    }
+})
+
+transactionHistory = new Vue({
+    delimiters: ['[[', ']]'],
+    el: '#transactionHistory',
+    data: {
+        title: "Transaction History",
+        transactions: [],
+    },
+    mounted() {
+        axios
+            .get('/api/transactions/')
+            .then(response => (this.transactions = response.data))
     }
 })
