@@ -11,52 +11,79 @@ Checkout
 <div id="cartPage" class="container">
     <div class="row justify-content-center">
         <h2>Checkout [[ message ]]</h2>
-        <table class="table">
-            <tr>
-                <th class="col-2"> Item </th>
-                <th class="col-2"></th>
-                <th class="col-2"> Price </th>
-                <th class="col-2"> Quantity </th>
-                <th class="col-2"> Item Total </th>
+        <div v-if=" items.length > 0">
+            <table class="table">
+                <tr>
+                    <th class="col-2"> Item</th>
+                    <th class="col-2"></th>
+                    <th class="col-2"> Price</th>
+                    <th class="col-2"> Quantity</th>
+                    <th class="col-2"> Item Total</th>
 
-            </tr>
-            <tr v-for="item in items">
-                <td class="col-2">image</td>
-                <td class="col-2">[[ item.product_name.product_name ]]</td>
-                <td class="col-2"> $[[ item.product_name.price ]]</td>
-                <td class="col-2">[[ item.quantity ]]</td>
-                <td class="col-2">$[[ item.item_total ]] </td>
-
-
-            </tr>
-            <tr>
-                <td class="col-2"></td>
-                <td class="col-2"></td>
-                <td class="col-2"></td>
-                <td class="col-2">Subtotal:</td>
-                <td class="col-2">$[[ totals.subtotal ]]</td>
-
-            </tr>
-            <tr>
-                <td class="col-2"></td>
-                <td class="col-2"></td>
-                <td class="col-2"></td>
-                <td class="col-2">15% Preferred Customer Discount:</td>
-                <td class="col-2">-$[[ totals.preferred_discount ]]</td>
-                <td class="col-2"></td>
-            </tr>
-            <tr>
-                <td class="col-2"></td>
-                <td class="col-2"></td>
-                <td class="col-2"></td>
-                <td class="col-2">Cart Total:</td>
-                <td class="col-2">$[[ totals.cart_total ]]</td>
-                <td class="col-2"></td>
-            </tr>
-        </table>
-        <a class="btn btn-light" href="{% url 'app:cart' %}">Go Back to Edit Cart</a>
-        <button class="btn btn-light"> Confirm Checkout</button>
-
+                </tr>
+                <tr v-for="item in items">
+                    <td class="col-2"><img v-bind:src="item.product_name.image"></td>
+                    <td class="col-2">[[ item.product_name.product_name ]]</td>
+                    <td class="col-2"> $[[ item.product_name.price ]]</td>
+                    <td class="col-2">[[ item.quantity ]]</td>
+                    <td class="col-2">$[[ item.item_total ]]</td>
+                </tr>
+                <template v-if="profile[0].preferred">
+                    <tr>
+                        <td class="col-2"></td>
+                        <td class="col-2"></td>
+                        <td class="col-2"></td>
+                        <td class="col-2">Subtotal:</td>
+                        <td class="col-2">$[[ totals.subtotal ]]</td>
+                        <td class="col-2"></td>
+                    </tr>
+                    <tr>
+                        <td class="col-2"></td>
+                        <td class="col-2"></td>
+                        <td class="col-2"></td>
+                        <td class="col-2">15% Preferred Customer Discount:</td>
+                        <td class="col-2">-$[[ totals.preferred_discount ]]</td>
+                        <td class="col-2"></td>
+                    </tr>
+                    <tr>
+                        <td class="col-2"></td>
+                        <td class="col-2"></td>
+                        <td class="col-2"></td>
+                        <td class="col-2">Cart Total:</td>
+                        <td class="col-2">$[[ totals.cart_total ]]</td>
+                        <td class="col-2"></td>
+                    </tr>
+                </template>
+                <template v-else>
+                    <tr>
+                        <td class="col-2"></td>
+                        <td class="col-2"></td>
+                        <td class="col-2"></td>
+                        <td class="col-2">Cart Total:</td>
+                        <td class="col-2">$[[ totals.cart_total ]]</td>
+                        <td class="col-2"></td>
+                    </tr>
+                </template>
+            </table>
+            <div class="row justify-content-center">
+                <a class="btn btn-light" href="{% url 'app:cart' %}">Go Back to Edit Cart</a>
+            </div>
+            <div v-bind:id="countCheckoutError">
+                <div v-for="item in items" class="row justify-content-center">
+                    <div v-if="item.quantity > item.product_name.inventory">
+                        <p> [[item.product_name.product_name]] only has [[item.product_name.inventory]] items in stock.
+                            Please adjust your cart before checking out.</p>
+                    </div>
+                </div>
+                <div v-if="errorCount === 0" class="row justify-content-center">
+                    <button class="btn btn-light btn-lg"> Confirm Checkout</button>
+                </div>
+            </div>
+        </div>
+        <div v-else>
+            <p> You currently have nothing in your cart! Please visit our products page. </p>
+            <a class="btn btn-light" href="{% url 'app:list_products' %}">Products</a>
+        </div>
     </div>
 </div>
 {% else %}
