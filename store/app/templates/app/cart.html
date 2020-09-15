@@ -76,13 +76,15 @@ Cart
                     </tr>
                 </template>
             </table>
-            <div v-for="item in items" class="row justify-content-center">
-                <div v-if="item.quantity < item.product_name.inventory + 1">
-                    <a class="btn btn-light" href="{% url 'app:checkout' %}">Checkout</a>
+            <div v-bind:id="countCheckoutError">
+                <div v-for="item in items" class="row justify-content-center">
+                    <div v-if="item.quantity > item.product_name.inventory">
+                        <p> [[item.product_name.product_name]] only has [[item.product_name.inventory]] items in stock.
+                            Please adjust your cart before checking out.</p>
+                    </div>
                 </div>
-                <div v-else>
-                    <p> [[item.product_name.product_name]] only has [[item.product_name.inventory]] items in stock.
-                        Please adjust your cart before checking out.</p>
+                <div v-if="errorCount === 0" class="row justify-content-center">
+                    <a class="btn btn-light" href="{% url 'app:checkout' %}">Checkout</a>
                 </div>
             </div>
         </div>

@@ -10,6 +10,7 @@ cartPage = new Vue({
         items: [],
         totals: "",
         profile: [],
+        errorCount: "",
 
     },
     methods: {
@@ -77,7 +78,15 @@ cartPage = new Vue({
 
     },
     computed: {
-
+        countCheckoutError: function () {
+            this.errorCount = 0
+            this.items.forEach(item => {
+                if (item.quantity > item.product_name.inventory) {
+                    this.errorCount++
+                    console.log(this.errorCount)
+                }
+            })
+        }
     },
     mounted:
         function (){
