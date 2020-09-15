@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from decimal import Decimal
 
 # https://stackoverflow.com/questions/34563454/django-imagefield-upload-to-path
 # these I think we'll need for the image rendering somehow....
@@ -14,14 +17,10 @@ from .models import Profile, Products, TransactionsHistory, Cart
 
 class ProfileListCreate(generics.ListCreateAPIView):
 
-
-    queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-
-    # this is how I passed a particular user to template, then Vue could grab that - we can rename it later or bag it altogether
-    def pre_save(self, request):
-        current_user = request.user
-        user = User.objects.get(username=current_user)
+    
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.request.user)
 
 class ProductsListCreate(generics.ListCreateAPIView):
 
@@ -54,3 +53,27 @@ class CartDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return Cart.objects.filter(user=self.request.user)
+
+@api_view()
+def totals(request):
+    user_carts = Cart.objects.filter(user=request.user)
+    subtotal = 0
+    for cart in user_carts:
+        item_total = cart.product_name.price * cart.quantity
+        subtotal += item_total
+    profile = Profile.objects.get(user=request.user)
+    if profile.preferred == True:
+        discount = float(subtotal) * .15
+        preferred_discount = round(discount, 2)
+        total = float(subtotal)-preferred_discount
+        cart_total = round(total, 2)
+    else:
+        preferred_discount = 0
+        cart_total = subtotal
+
+
+    return JsonResponse({
+        "subtotal": subtotal,
+        "preferred_discount": preferred_discount,
+        "cart_total": cart_total,
+    })

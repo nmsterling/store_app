@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+    User Profile
+{% endblock %}
+
+{% block content %}
+<div id="userProfile">
+
+    <h1>[[ message ]]</h1>
+    <ul v-for=" i in info">
+        <li>[[ i.user ]]</li>
+        <li>[[ i.address ]]</li>
+        <li>[[ i.preferred ]]</li>
+    </ul>
+</div>
+
+
+{% endblock %}

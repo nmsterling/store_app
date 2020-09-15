@@ -30,16 +30,16 @@ body,
 
 h1 {
   letter-spacing: 8px;
-  color: whitesmoke;
+  color: rgb(22, 22, 22);
 }
 
 h5 {
   letter-spacing: 3px;
-  color: whitesmoke;
+  color: rgb(22, 22, 22);
 }
 
 #link {
-  color: whitesmoke;
+  color: rgb(22, 22, 22);
 }
 
 .hr-light {
@@ -47,6 +47,10 @@ h5 {
   width: 80px;
 }
 
-#test, #cartPage {
-  margin-top: 25vh;
+header {
+  margin-bottom: 15vh;
+}
+
+table, td, th {
+    text-align: center;
 }
