@@ -20,5 +20,7 @@ urlpatterns = [
     path('reviews/<int:pk>', views.reviews_list, name="reviews"),
     path('create-review/<int:pk>/', views.create_review, name='create-review'),
     path('review_save/', views.review_save, name='review_save'),
+    path('checkout/', TemplateView.as_view(template_name='app/checkout.html'), name='checkout'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -10,6 +10,13 @@ cartPage = new Vue({
         preferred: "",
     },
     methods: {
+        deleteCartItem: function(id) {
+              const url = "/api/cart/" + id + "/";
+              axios.delete(url)
+                  .then(response => {
+                      console.log(response)
+                  });
+        },
 
     },
     computed: {
@@ -38,32 +45,32 @@ userProfile = new Vue({
 
 }),
 
-//alert('works');
-
-reviewsPage = new Vue({
-    delimiters: ['[[', ']]'],
-    el: '#reviewsPage',
-       data: {
-        user: user,
-        products: [],
-    },
-    methods: {
-
-    },
-    computed: {
-
-    },
-    mounted: function (){
-        axios.get('/api/products/')
-            .then(response => {
-            this.items = response.data
-            })
-    },
-
-    mounted() {
-        axios
-            .get('/api/profile')
-            .then(response => (this.info = response.data))
-    }
-
-});
+////alert('works');
+//
+//reviewsPage = new Vue({
+//    delimiters: ['[[', ']]'],
+//    el: '#reviewsPage',
+//       data: {
+//        user: user,
+//        products: [],
+//    },
+//    methods: {
+//
+//    },
+//    computed: {
+//
+//    },
+//    mounted: function (){
+//        axios.get('/api/products/')
+//            .then(response => {
+//            this.items = response.data
+//            })
+//    },
+//
+//    mounted() {
+//        axios
+//            .get('/api/profile')
+//            .then(response => (this.info = response.data))
+//    }
+//
+//});
