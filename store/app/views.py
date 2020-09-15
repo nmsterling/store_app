@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.db.models import Q
-from django.contrib.auth import authenticate
+from django.db.models import Sum
 
 from api.models import Products, Cart
 
@@ -69,3 +69,20 @@ def filter_products(request, category):
             "products": context
         })
     return render(request, "app/search_fail.html")
+
+def add_to_cart(request, pk):
+    current_user = request.user
+    product = Products.objects.get(pk=pk)
+    # add product to cart
+    c = Cart(user=current_user, product_name=product, quantity=1)
+    # save to disk
+    c.save()
+    # get number of items in cart for current user
+    cart_dict = Cart.objects.filter(user=current_user).aggregate(Sum('quantity'))
+    cart_list = [int(value) for value in cart_dict.values()]
+    products = Products.objects.all()
+
+    return render(request, "app/products.html", {
+        "cart": cart_list[0],
+        "products": products
+    })
