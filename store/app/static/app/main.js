@@ -9,7 +9,8 @@ cartPage = new Vue({
         message: 'Cart:',
         items: [],
         totals: "",
-        preferred: "",
+        profile: [],
+
     },
     methods: {
         decreaseQuantity: function(id){
@@ -87,6 +88,12 @@ cartPage = new Vue({
             axios.get('/api/totals/')
                 .then(response => {
                 this.totals = response.data
+                console.log(response)
+                });
+            axios.get('/api/profile/')
+                .then(response => {
+                this.profile = response.data
+                console.log(response)
                 });
         },
 })
@@ -100,7 +107,7 @@ userProfile = new Vue({
     },
     mounted() {
         axios
-            .get('/api/profile')
+            .get('/api/profile/')
             .then(response => (this.info = response.data))
     }
 })
