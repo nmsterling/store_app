@@ -54,3 +54,11 @@ header {
 table, td, th {
     text-align: center;
 }
+
+.account_details {
+  list-style-type: none;
+}
+
+.account_label {
+  font-weight: 900; 
+}

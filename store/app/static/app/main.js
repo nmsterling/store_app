@@ -39,7 +39,7 @@ userProfile = new Vue({
     delimiters: ['[[', ']]'],
     el: '#userProfile',
     data: {
-        message: 'Account',
+        message: 'My Account',
         info: [],
     },
     mounted() {
