@@ -51,11 +51,21 @@ def categories(request):
         })
 
 def filter_products(request, category):
-    print(category)
+    # query the db for matching queries
     context = Products.objects.filter(Q(category__icontains=category) | Q(brand__icontains=category))
-    print(context)
+    #if user is authenticated we'll want to provide cart info here too (as in list_products)
+    if request.user.is_authenticated:
+        current_user = request.user
+        cart_dict = Cart.objects.filter(user=current_user).aggregate(Sum('quantity'))
+        cart_list = [int(value) for value in cart_dict.values()]
+        if context:
+            return render(request, "app/category_filter.html", {
+            "products": context,
+            "cart": cart_list[0]
+            })
+    # user isn't logged in but we still will let them peruse
     if context:
-        return render(request, "app/category_filter.html", {
-        "products": context
+        return render(request, "app/category_filter.html",{
+            "products": context
         })
     return render(request, "app/search_fail.html")
