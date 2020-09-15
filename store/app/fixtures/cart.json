@@ -1,0 +1,38 @@
+[
+{
+    "model": "api.cart",
+    "pk": 1,
+    "fields": {
+        "user": "michael",
+        "product_name": "Mono Gig Bag",
+        "quantity": 1
+    }
+},
+{
+    "model": "api.cart",
+    "pk": 2,
+    "fields": {
+        "user": "michael",
+        "product_name": "Mono Gig Bag",
+        "quantity": 1
+    }
+},
+{
+    "model": "api.cart",
+    "pk": 3,
+    "fields": {
+        "user": "michael",
+        "product_name": "Mono Gig Bag",
+        "quantity": 1
+    }
+},
+{
+    "model": "api.cart",
+    "pk": 4,
+    "fields": {
+        "user": "michael",
+        "product_name": "Fender Deluxe Reverb",
+        "quantity": 1
+    }
+}
+]

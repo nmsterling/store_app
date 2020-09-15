@@ -1,0 +1,52 @@
+[
+{
+    "model": "api.reviews",
+    "pk": 2,
+    "fields": {
+        "user": "michael",
+        "product_name": "Fender Telecaster",
+        "review": "I love this guitar",
+        "product_rating": 5
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 3,
+    "fields": {
+        "user": "michael",
+        "product_name": "Mono Gig Bag",
+        "review": "Great product!",
+        "product_rating": 4
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 4,
+    "fields": {
+        "user": "michael",
+        "product_name": "Fender Deluxe Reverb",
+        "review": "Very good amp",
+        "product_rating": 3
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 5,
+    "fields": {
+        "user": "michael",
+        "product_name": "Epiphone Broadway",
+        "review": "great for chopping wood in a big band",
+        "product_rating": 4
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 6,
+    "fields": {
+        "user": "michael",
+        "product_name": "Fender Stratocaster",
+        "review": "some would say \"this is THE electric guitar\". I would reply, \"have you ever played a tele, bruh?\"",
+        "product_rating": 1
+    }
+}
+]
