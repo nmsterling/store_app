@@ -21,7 +21,7 @@ body,
 }
 
 .navbar:not(.top-nav-collapse) {
-  background: transparent !important;
+  background: #EDECE8;
 }
 
 @media (max-width: 991px) {
