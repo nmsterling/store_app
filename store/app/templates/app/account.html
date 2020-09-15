@@ -5,15 +5,37 @@
 {% endblock %}
 
 {% block content %}
-<div id="userProfile">
+<div id="userProfile" class="container">
 
     <h1>[[ message ]]</h1>
-    <ul v-for=" i in info">
-        <li>[[ i.user ]]</li>
-        <li>[[ i.address ]]</li>
-        <li>[[ i.preferred ]]</li>
+    <ul v-for=" i in info" class="account_details">
+        <li><h5 class="account_label">Name:</h5> [[ i.user ]]</li><br>
+        <li><h5 class="account_label">Address:</h5> [[ i.address ]]</li><br>
+        <li><h5 class="account_label">Preferred Status:</h5> [[ i.preferred ]]</li><br>
     </ul>
 </div>
-
+<div id="transactionHistory" class="container">
+    <div class="row justify-content-center" id="history_table">
+        <h2>[[ title ]]</h2>
+        <table class="table table-hover">
+            <thead class="thead">
+                <tr>
+                    <th class="col-3">Product Name</th>
+                    <th class="col-3">Quantity</th>
+                    <th class="col-3">Transaction Total</th>
+                    <th class="col-3">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="t in transactions">
+                    <td class="col-3">[[ t.product_name ]]</td>
+                    <td class="col-3">[[ t.quantity_purchased ]]</td>
+                    <td class="col-3">[[ t.transaction_total ]]</td>
+                    <td class="col-3">[[ t.timestamp ]]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}
