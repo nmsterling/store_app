@@ -73,13 +73,13 @@
         "model": "api.products",
         "pk": 6,
         "fields": {
-            "product_name": "Fender Stratocaster",
+            "product_name": "Fender Telecaster",
             "product_description": "American made, A duo of Fender Yosemite single-coil pickups with flat-staggered pole pieces to increase output, the solid body that started it all.",
             "price": "1146.99",
             "inventory": 14,
             "brand": "Fender",
             "category": "ELECTRIC",
-            "image": "static/static_dirs/media/orange_tele.jpg",
+            "image": "static/static_dirs/media/orange_tele_9fObmq3.jpg",
             "related_products": "Fender Deluxe Reverb '65 Reissue, Fender Telecaster, Mono Vertigo Electric Hybrid Gig Bag"
         }
     },
@@ -109,6 +109,20 @@
             "category": "TUBE AMPS",
             "image": "static/static_dirs/media/vibroverb.jpg",
             "related_products": "Fender Telecaster, Elixer Strings"
+        }
+    },
+    {
+        "model": "api.products",
+        "pk": 6,
+        "fields": {
+            "product_name": "Fender Telecaster",
+            "product_description": "American made, A duo of Fender Yosemite single-coil pickups with flat-staggered pole pieces to increase output, the solid body that started it all.",
+            "price": "1146.99",
+            "inventory": 14,
+            "brand": "Fender",
+            "category": "ELECTRIC",
+            "image": "static/static_dirs/media/natural_tele.jpg",
+            "related_products": "Fender Deluxe Reverb '65 Reissue, Fender Telecaster, Mono Vertigo Electric Hybrid Gig Bag"
         }
     }
     ]
