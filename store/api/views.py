@@ -22,6 +22,11 @@ class ProfileListCreate(generics.ListCreateAPIView):
     def get_queryset(self):
         return Profile.objects.filter(user=self.request.user)
 
+class ProfileStatus(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ProfileSerializer
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.request.user)
+        
 class ProductsListCreate(generics.ListCreateAPIView):
 
 
@@ -32,10 +37,6 @@ class ProductsListCreate(generics.ListCreateAPIView):
         current_user = request.user
         user = User.objects.get(username=current_user)
 
-class ProfileStatus(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ProfileSerializer
-    def get_queryset(self):
-        return Profile.objects.filter(user=self.request.user)
 
 
 class TransactionHistoryListCreate(generics.ListCreateAPIView):
