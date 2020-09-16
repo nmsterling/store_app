@@ -93,7 +93,7 @@
             "inventory": 11,
             "brand": "Fender",
             "category": "ELECTRIC",
-            "image": "static/static_dirs/media/Butterscotch_tele.jpg",
+            "image": "static/static_dirs/media/white_tele.jpg",
             "related_products": "Fender Deluxe Reverb '65 Reissue, Mono Vertigo Electric Hybrid Gig Bag"
         }
     },
@@ -107,7 +107,7 @@
             "inventory": 13,
             "brand": "Fender",
             "category": "TUBE AMPS",
-            "image": "static/static_dirs/media/fender_deluxe.jpg",
+            "image": "static/static_dirs/media/vibroverb.jpg",
             "related_products": "Fender Telecaster, Elixer Strings"
         }
     }
