@@ -27,17 +27,13 @@ cartPage = new Vue({
                             item.item_total = response.data.item_total;
                         }
                     })
-
-                })
-                .then (
                     axios.get('/api/totals/')
                         .then(response => {
                         this.totals = response.data
                         console.log(response)
                         })
-                );
-          },
-
+                });
+        },
         increaseQuantity: function(id){
                 const url = "/api/cart/" + id + "/";
                 const item = this.items.filter(item => item.id === id)[0];
@@ -51,15 +47,12 @@ cartPage = new Vue({
                             item.item_total = response.data.item_total;
                         }
                     })
-
-                })
-                .then (
                     axios.get('/api/totals/')
                         .then(response => {
                         this.totals = response.data
                         console.log(response)
                         })
-                );
+                });
         },
         deleteCartItem: function(id) {
               const url = "/api/cart/" + id + "/";
