@@ -39,7 +39,7 @@ class Products(models.Model):
     ),
 ]
 
-    product_name = models.CharField(max_length=30, unique=True)
+    product_name = models.CharField(max_length=30)
     product_description = models.TextField(blank=True)
     price = models.DecimalField(decimal_places=2, max_digits=7)
     inventory = models.IntegerField()
@@ -63,7 +63,7 @@ class Reviews(models.Model):
         (5, '5'),
     )
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
-    product_name = models.ForeignKey(Products, to_field='product_name', on_delete=models.CASCADE)
+    product_name = models.ForeignKey(Products, on_delete=models.CASCADE)
     review = models.TextField(blank=True)
     product_rating = models.IntegerField(choices=ONE_TO_FIVE_STAR_RATING_CHOICES)
 
@@ -74,7 +74,7 @@ class Reviews(models.Model):
 
 class TransactionsHistory(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
-    product_name = models.ForeignKey(Products, to_field='product_name', on_delete=models.CASCADE)
+    product_name = models.ForeignKey(Products, on_delete=models.CASCADE)
     quantity_purchased = models.IntegerField()
     transaction_total = models.DecimalField(decimal_places=2, max_digits=10)
     timestamp = models.DateTimeField(auto_now=True)
@@ -86,7 +86,7 @@ class TransactionsHistory(models.Model):
 
 class Cart(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
-    product_name = models.ForeignKey(Products, to_field="product_name", on_delete=models.CASCADE)
+    product_name = models.ForeignKey(Products, on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
     def __str__(self):
