@@ -1,4 +1,5 @@
 from django import forms
+from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -52,6 +53,8 @@ class Products(models.Model):
     def __str__(self):
         return self.product_name
 
+    def get_absolute_url(self):
+        return reverse('api:products-filter', args=[str(self.id)])
 
 class Reviews(models.Model):
     # https: // claritydev.net / blog / adding - a - blog - to - your - django - website / ----- the RichTextField
