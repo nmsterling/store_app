@@ -16,5 +16,6 @@ urlpatterns = [
     path('account/', TemplateView.as_view(template_name='app/account.html'), name='account'),
     path('filter/<str:category>/', views.filter_products, name="filter"),
     path('checkout/', TemplateView.as_view(template_name='app/checkout.html'), name='checkout'),
+    path('cart/<int:pk>', views.add_to_cart, name='cart_add'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

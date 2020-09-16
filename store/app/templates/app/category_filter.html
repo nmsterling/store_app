@@ -23,9 +23,14 @@
                 <td>{{ product.product_description }}</td>
                 <td><a href=""><img src="{{ product.image.url }}"></a></td>
                 <td>{{ product.price }}</td>
-                <td><a class="btn btn-primary" href="{% url 'api:cart' %}" role="button">Add to Cart</a></td>
-
-            </tr>
+                {% if user.is_authenticated %}
+                    <td>
+                        <form action="{% url 'app:cart_add' pk=product.pk %}" class="form-inline">
+                            <input type="hidden" name="product-name" class="form-control mr-sm-2" type="text" value="{{ product.pk }}">
+                                <button class="btn btn-primary" type="submit">Add to Cart</button>
+                        </form>
+                    </td>
+                {% endif %}
             {% endif %}
         {% endfor %}
 
