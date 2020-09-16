@@ -11,7 +11,14 @@
     <ul v-for=" i in info" class="account_details">
         <li><h5 class="account_label">Name:</h5> [[ i.user ]]</li><br>
         <li><h5 class="account_label">Address:</h5> [[ i.address ]]</li><br>
-        <li><h5 class="account_label">Preferred Status:</h5> [[ i.preferred ]]</li><br>
+        <li><h5 class="account_label">Preferred Status:</h5></li>
+        <li :key="i.id"
+            ><input v-model='i.preferred' type="checkbox" @change='changeStatus(i.id)'>
+            <span>
+                Preferred Status: 
+            </span>
+            <span>[[ i.preferred ]]</span>
+        </li><br>
     </ul>
 </div>
 <div id="transactionHistory" class="container">
