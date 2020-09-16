@@ -1,50 +1,37 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.db.models import Q
+from django.contrib.auth import authenticate
 
-from api.models import Products
+from api.models import Products, Cart
 
 import itertools
+
 # Create your views here.
 
 # Look up how to put these all into a Class Based APIList View with defs or something
 
 def list_products(request):
+    # we'll want to call all products regardless if user has cart objects or not
     products = Products.objects.all()
+    # check if user is logged in
+    if request.user.is_authenticated:
+        current_user = request.user
+        # call cart objects for current_user
+        cart = Cart.objects.filter(user=current_user)
+        # if user has objects in their cart proceed
+        if cart:
+            cart_dict = Cart.objects.filter(user=current_user).aggregate(Sum('quantity'))
+            # the zeroth index of the below list will be the total items in the user's cart
+            cart_list = [int(value) for value in cart_dict.values()]
+            return render(request, 'app/products.html', {
+                "products": products,
+                "cart": cart_list[0]
+            })
     return render(request, 'app/products.html', {
         "products": products
     })
 
-# class ProductsListView(ListView):
-#     model = Products
-
-# def categories_filter(request):
-
-def list_electric(request):
-    products = Products.objects.filter(category="ELECTRIC")
-    return render(request, 'app/category_filter.html', {
-        "products": products
-    })
-
-def list_acoustic(request):
-    products = Products.objects.filter(category="ACOUSTIC")
-    return render(request, 'app/category_filter.html', {
-        "products": products
-    })
-
-def list_amps(request):
-    products = Products.objects.filter(category__icontains="AMPS")
-    print(products)
-    return render(request, 'app/category_filter.html', {
-        "products": products
-    })
-
-def list_cases(request):
-    products = Products.objects.filter(category__icontains="CASES")
-    print(products)
-    return render(request, 'app/category_filter.html', {
-        "products": products
-    })
 
 def categories_list_view(request):
     category = str(request.GET.get('category_search')).upper()

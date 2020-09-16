@@ -71,6 +71,7 @@ class Reviews(models.Model):
         return f"{self.user}, {self.product_name}, {self.product_rating}"
 
 
+
 class TransactionsHistory(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
     product_name = models.ForeignKey(Products, to_field='product_name', on_delete=models.CASCADE)
@@ -78,8 +79,10 @@ class TransactionsHistory(models.Model):
     transaction_total = models.DecimalField(decimal_places=2, max_digits=10)
     timestamp = models.DateTimeField(auto_now=True)
 
+
     def __str__(self):
         return f"{self.user}, {self.product_name}, quantity: {self.quantity_purchased}, total: {self.transaction_total}, {self.timestamp}"
+
 
 class Cart(models.Model):
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
