@@ -29,7 +29,6 @@ class ProfileStatus(generics.RetrieveUpdateDestroyAPIView):
         
 class ProductsListCreate(generics.ListCreateAPIView):
 
-
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
 
@@ -37,7 +36,9 @@ class ProductsListCreate(generics.ListCreateAPIView):
         current_user = request.user
         user = User.objects.get(username=current_user)
 
-
+class ProductsFilter(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Products.objects.all()
+    serializer_class = ProductsSerializer
 
 class TransactionHistoryListCreate(generics.ListCreateAPIView):
     queryset = TransactionsHistory.objects.all()

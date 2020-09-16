@@ -31,3 +31,4 @@ class UserProfileTestCase(TestCase):
     #                                 'user': user.user,
     #                                 'address': user.adress,
     #                                 'preferred': user.preferred})
+
