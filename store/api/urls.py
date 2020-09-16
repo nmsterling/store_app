@@ -12,6 +12,7 @@ urlpatterns = [
     path('profile/', views.ProfileListCreate.as_view()),
     path('profile/<int:pk>/', views.ProfileStatus.as_view()),
     path('products/', views.ProductsListCreate.as_view()),
+    path('products/<int:pk>/', views.ProductsDetail.as_view()),
     path('transactions/', views.TransactionHistoryListCreate.as_view()),
     path('cart/', views.CartListCreate.as_view(), name='cart'),
     path('cart/<int:pk>/', views.CartDetail.as_view(), name='update-cart'),

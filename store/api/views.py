@@ -37,6 +37,9 @@ class ProductsListCreate(generics.ListCreateAPIView):
         current_user = request.user
         user = User.objects.get(username=current_user)
 
+class ProductsDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Products.objects.all()
+    serializer_class = ProductsSerializer
 
 
 class TransactionHistoryListCreate(generics.ListCreateAPIView):

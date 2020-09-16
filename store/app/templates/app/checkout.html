@@ -6,7 +6,7 @@ Checkout
 {% endblock %}
 
 {% block content %}
-
+{% csrf_token %}
 {% if user.is_authenticated %}
 <div id="cartPage" class="container">
     <div class="row justify-content-center">
@@ -76,7 +76,7 @@ Checkout
                     </div>
                 </div>
                 <div v-if="errorCount === 0" class="row justify-content-center">
-                    <button class="btn btn-light btn-lg"> Confirm Checkout</button>
+                    <a class="btn btn-light btn-lg" href="{% url 'app:account' %}" @click="checkout"> Confirm Checkout</a>
                 </div>
             </div>
         </div>

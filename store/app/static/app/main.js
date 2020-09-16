@@ -68,7 +68,39 @@ cartPage = new Vue({
                         });
                   });
         },
-
+        checkout: function() {
+            pass
+//            if (profile[0].preferred){
+//                this.items.ForEach(item =>
+//                    axios.post('/api/transactions/', {
+//                        user: this.item.user
+//                        product_name: this.item.product_name
+//                        quantity_purchased: this.item.quantity
+//                        transaction_total: this.item.discounted_item_total
+//                        })
+//                    axios.delete("/api/cart/" + this.item.id + "/")
+//                    const products_url = "/api/products/" + this.item.product_name.id + "/";
+//                    axios.patch(products_url, {
+//                        inventory: this.item.product_name.inventory - this.item.quantity
+//                    })
+//                );
+//            },
+//            else {
+//                this.items.ForEach(item =>
+//                    axios.post('/api/transactions/', {
+//                        user: this.item.user
+//                        product_name: this.item.product_name
+//                        quantity_purchased: this.item.quantity
+//                        transaction_total: this.item.item_total
+//                        })
+//                    axios.delete("/api/cart/" + this.item.id + "/")
+//                    const products_url = "/api/products/" + this.item.product_name.id + "/";
+//                    axios.patch(products_url, {
+//                        inventory: this.item.product_name.inventory - this.item.quantity
+//                    })
+//                );
+//            }
+        },
     },
     computed: {
         countCheckoutError: function () {
@@ -86,6 +118,7 @@ cartPage = new Vue({
             axios.get('/api/cart/')
                 .then(response => {
                 this.items = response.data
+                console.log(response)
                 });
             axios.get('/api/totals/')
                 .then(response => {
