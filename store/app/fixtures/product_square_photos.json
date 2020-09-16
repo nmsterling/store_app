@@ -106,7 +106,7 @@
             "price": "999.99",
             "inventory": 14,
             "brand": "Fender",
-            "category": "ELECTRIC",
+            "category": "ACOUSTIC",
             "image": "static/static_dirs/media/acoustic.jpg",
             "related_products": "Fender Deluxe Reverb '65 Reissue, Fender Telecaster, Mono Vertigo Electric Hybrid Gig Bag"
         }
