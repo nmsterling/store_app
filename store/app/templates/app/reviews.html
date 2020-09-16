@@ -1,0 +1,34 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}
+Store
+{% endblock %}
+
+{% block content %}
+<h1>Reviews</h1>
+
+{% for review in reviews %}
+<table class="table">
+
+    <tr>
+        <th>Product</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Review</th>
+
+    </tr>
+    <tr>
+
+        <td>{{ product.product_name }}</td>
+        <td><img src="{{ product.image.url }}"></td>
+        <td>{{ product.price }}</td>
+        <td>{{ review.product_rating }} stars out of 5</td>
+        <td>{{ review.review }}</td>
+
+    </tr>
+    {% endfor %}
+
+    <script src="{% static 'app/main.js' %}"></script>
+    {% endblock %}

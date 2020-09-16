@@ -63,7 +63,8 @@ class Reviews(models.Model):
         (5, '5'),
     )
     user = models.ForeignKey(User, to_field="username", on_delete=models.CASCADE)
-    product_name = models.ForeignKey(Products, on_delete=models.CASCADE)
+    # this field is going to take an integer which will correspond with a pk to a product from Products model
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)
     review = models.TextField(blank=True)
     product_rating = models.IntegerField(choices=ONE_TO_FIVE_STAR_RATING_CHOICES)
 

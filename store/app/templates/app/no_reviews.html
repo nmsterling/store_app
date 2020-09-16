@@ -1,0 +1,15 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}
+    Store
+{% endblock %}
+
+{% block content %}
+
+
+<h2>{{ product.product_name }} has no reviews yet</h2>
+<h3>would you like to write the first <a href="{% url 'app:create-review' pk=product.pk%}">review</a></h3>
+
+    <script src="{% static 'app/main.js' %}"></script>
+{% endblock %}

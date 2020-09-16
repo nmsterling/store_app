@@ -3,7 +3,7 @@ from django.views.generic.list import ListView
 from django.db.models import Q
 from django.db.models import Sum
 
-from api.models import Products, Cart
+from api.models import Products, Cart, Reviews
 
 import itertools
 
@@ -85,4 +85,27 @@ def add_to_cart(request, pk):
     return render(request, "app/products.html", {
         "cart": cart_list[0],
         "products": products
+    })
+
+def reviews_list(request, pk):
+    pk = pk
+    product = Products.objects.get(pk=pk)
+    print(product.pk)
+    reviews = Reviews.objects.filter(product=product.pk)
+    if not reviews:
+        return render(request, "app/no_reviews.html", {
+            "product": product
+        })
+    return render(request, "app/reviews.html", {
+        "product": product,
+        "reviews": reviews
+    })
+
+def create_review(request, pk):
+    current_user = request.user
+    print(current_user)
+    product = Products.objects.get(pk=pk)
+    return render(request, "app/create_review.html", {
+        "user": current_user,
+        "product": product
     })
