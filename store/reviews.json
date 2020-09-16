@@ -1,0 +1,72 @@
+[
+{
+    "model": "api.reviews",
+    "pk": 2,
+    "fields": {
+        "user": "michael",
+        "product": 1,
+        "review": "I love this guitar",
+        "product_rating": 5
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 3,
+    "fields": {
+        "user": "michael",
+        "product": 2,
+        "review": "Great product!",
+        "product_rating": 4
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 4,
+    "fields": {
+        "user": "michael",
+        "product": 3,
+        "review": "Very good amp",
+        "product_rating": 3
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 5,
+    "fields": {
+        "user": "michael",
+        "product": 4,
+        "review": "great for chopping wood in a big band",
+        "product_rating": 4
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 6,
+    "fields": {
+        "user": "michael",
+        "product": 5,
+        "review": "some would say \"this is THE electric guitar\". I would reply, \"have you ever played a tele, bruh?\"",
+        "product_rating": 1
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 7,
+    "fields": {
+        "user": "michael",
+        "product": 1,
+        "review": "Twang twang twang, that middle pickup tho...right?",
+        "product_rating": 3
+    }
+},
+{
+    "model": "api.reviews",
+    "pk": 8,
+    "fields": {
+        "user": "michael",
+        "product": 2,
+        "review": "this might just be the best case...EVER!!!!",
+        "product_rating": 5
+    }
+}
+]

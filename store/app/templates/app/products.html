@@ -32,10 +32,17 @@ Store
     </tr>
     {% endif %}
     <td>
+<!--        see customer reviews button-->
         <form action="{% url 'app:reviews' pk=product.pk %}">
             <button class="btn btn-primary" type="submit">see customer reviews</button>
         </form>
     </td>
+    <td>
+<!--        write a review button-->
+        <form action="{% url 'app:create-review' pk=product.pk %}">
+            <button class="btn btn-primary" type="submit">write a review</button>
+        </form>
+        </td>
     {% endfor %}
 
     <script src="{% static 'app/main.js' %}"></script>
