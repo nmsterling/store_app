@@ -9,8 +9,9 @@ Checkout
 
 {% if user.is_authenticated %}
 <div id="cartPage" class="container">
-    <div class="row justify-content-center">
-        <h2>Checkout [[ message ]]</h2>
+    <div>
+        <h2>Checkout [[ message ]] </h2>
+        <h5 v-if="profile.length > 0">Shipping Address: [[ profile[0].address ]]</h5>
         <div v-if=" items.length > 0">
             <table class="table">
                 <tr>
