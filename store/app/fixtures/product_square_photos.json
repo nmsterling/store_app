@@ -113,7 +113,7 @@
     },
     {
         "model": "api.products",
-        "pk": 6,
+        "pk": 9,
         "fields": {
             "product_name": "Fender Telecaster",
             "product_description": "American made, A duo of Fender Yosemite single-coil pickups with flat-staggered pole pieces to increase output, the solid body that started it all.",
@@ -121,8 +121,50 @@
             "inventory": 14,
             "brand": "Fender",
             "category": "ELECTRIC",
-            "image": "static/static_dirs/media/natural_tele.jpg",
+            "image": "static/static_dirs/media/natural_tele_eCdwLTn.jpg",
             "related_products": "Fender Deluxe Reverb '65 Reissue, Fender Telecaster, Mono Vertigo Electric Hybrid Gig Bag"
+        }
+    },
+    {
+        "model": "api.products",
+        "pk": 10,
+        "fields": {
+            "product_name": "Taylor Gig Bag",
+            "product_description": "Reliable, sturdy, comfortable, plenty of pocket space for tablet/laptop, sheet music or accessories",
+            "price": "249.99",
+            "inventory": 7,
+            "brand": "Taylor",
+            "category": "SOFT CASES",
+            "image": "static/static_dirs/media/taylor_case.jpg",
+            "related_products": "Fender Telecaster, Elixer Strings"
+        }
+    },
+    {
+        "model": "api.products",
+        "pk": 11,
+        "fields": {
+            "product_name": "Marshall Amp",
+            "product_description": "1x12 22-watt Tube Combo Amp. Black. four 12AX7s, two 12AT7s, two 6V6s, and a 5AR4 rectifier tubes",
+            "price": "1099.99",
+            "inventory": 13,
+            "brand": "Fender",
+            "category": "TUBE AMPS",
+            "image": "static/static_dirs/media/marshall_amp.jpg",
+            "related_products": "Fender Telecaster, Elixer Strings"
+        }
+    },
+    {
+        "model": "api.products",
+        "pk": 12,
+        "fields": {
+            "product_name": "Guitar Strap",
+            "product_description": "Leather guitar strap",
+            "price": "29.99",
+            "inventory": 13,
+            "brand": "Tom's Vintage Straps",
+            "category": "SOFT CASES",
+            "image": "static/static_dirs/media/guitar_strap.jpg",
+            "related_products": "Fender Telecaster, Elixer Strings"
         }
     }
     ]
