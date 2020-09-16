@@ -3,7 +3,7 @@ from django.views.generic.list import ListView
 from django.db.models import Q
 from django.db.models import Sum
 
-from api.models import Products, Cart
+from api.models import Products, Cart, Reviews
 
 import itertools
 
@@ -86,3 +86,50 @@ def add_to_cart(request, pk):
         "cart": cart_list[0],
         "products": products
     })
+
+def reviews_list(request, pk):
+    pk = pk
+    product = Products.objects.get(pk=pk)
+    print(product.pk)
+    reviews = Reviews.objects.filter(product=product.pk)
+    if not reviews:
+        return render(request, "app/no_reviews.html", {
+            "product": product
+        })
+    return render(request, "app/reviews.html", {
+        "product": product,
+        "reviews": reviews
+    })
+
+def create_review(request, pk):
+    current_user = request.user
+    print(current_user)
+    product = Products.objects.get(pk=pk)
+    return render(request, "app/create_review.html", {
+        "user": current_user,
+        "product": product
+    })
+
+def review_save(request):
+    if request.method == 'POST':
+        current_user = request.user
+        print(current_user)
+        pk = request.POST.get('pk')
+        product = Products.objects.get(pk=pk)
+        print(product.product_name)
+        review = request.POST.get('review')
+        print(review)
+        rating = request.POST.get('rating')
+        print(rating)
+        if current_user and product and review and rating:
+            cart_dict = Cart.objects.filter(user=current_user).aggregate(Sum('quantity'))
+            cart_list = [int(value) for value in cart_dict.values()]
+            products = Products.objects.all()
+            review = Reviews(user=current_user, product=product, review=review, product_rating=rating)
+            review.save()
+            return render(request, "app/products.html", {
+                "cart": cart_list[0],
+                "products": products
+            })
+        else:
+            return HttpResponse('you must fill out all fields to submit review')

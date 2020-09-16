@@ -32,6 +32,11 @@
                     </td>
                 {% endif %}
             {% endif %}
+        <td>
+            <form action="{% url 'app:reviews' pk=product.pk %}">
+                <button class="btn btn-primary" type="submit">see customer reviews</button>
+            </form>
+        </td>
         {% endfor %}
 
     <script src="{% static 'app/main.js' %}"></script>
