@@ -115,6 +115,15 @@ userProfile = new Vue({
         title: "Transaction History",
         info: [],
     },
+    methods: {
+        changeStatus(id) {
+            axios.patch(`/api/profile/${id}/`, {
+                preferred: this.info.preferred = !this.info.preferred
+            })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+        }
+    },
     mounted() {
         axios
             .get('/api/profile/')
