@@ -41,6 +41,11 @@ def categories_list_view(request):
         return render(request, "app/category_filter.html", {
         "products": context
         })
+    else:
+        categories = Products.objects.values_list('category', flat=True).distinct()
+        return render(request, "app/search_fail.html", {
+            "categories": categories
+            })
 
 def categories(request):
 
@@ -49,6 +54,8 @@ def categories(request):
         return render(request, "app/categories.html", {
             "categories": categories
         })
+    return HttpRespone("Wow, looks like we don't have ANYTHING to sell you right now")
+
 
 def filter_products(request, category):
     # query the db for matching queries
