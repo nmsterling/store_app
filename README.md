@@ -1,4 +1,4 @@
-# Nathan Kawaller CS50x Final Project
+# Guitar Store— CS50x Final Project
 
 This project is my final project submisson for Harvard CS50x. It was a group project, built by myself, Natalie Sterling and Michael Kramer. It is an online store (a guitar store in this case), and the main purposes of the project were to practice our CRUD skills, practice database design, and get comfortable using the Django Rest Framework.
 
